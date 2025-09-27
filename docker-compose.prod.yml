@@ -1,0 +1,86 @@
+networks:
+  happyworld-network:
+    # run the: docker network create happyworld-network
+    #external: true
+    driver: bridge
+
+volumes:
+  postgres_prod-data:
+  directus_prod-uploads:
+
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_prod
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_prod-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_DATABASE}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - happyworld-network
+
+  directus:
+    build:
+      context: ./directus
+      dockerfile: Dockerfile
+    container_name: directus_prod
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # если доступ только по Frontend:3000 и Nginx Reverse Proxy — порты на хост можно не пробрасывать
+    # и использовать этот Сервис как `directus:8055`, так как мы в одном Сети/Network который мы создали сверху
+    ports:
+      - "8060:8055"
+    env_file:
+      - .env
+    volumes:
+      #- ./directus/database:/directus/database   # <── we are using PostgreSQL as DB, and docker volume
+      - directus_prod-uploads:/directus/uploads   # <── use named volume to avoid host FS permission issues
+
+      # NOTE: if you decomment the `./directus/extensions` it will rewrite the Dockerfile COPY directus-sync extension,
+      # and so you need to mount your extensions directly in Dockerfile with directus-sync or store extensions in repo/direcus/extensions and mount it in the docker compose with volume!
+      #- ./directus/extensions:/directus/extensions   # <── already created in /directus/Dockerfile
+      #- ./directus/templates:/directus/templates   # <── we are not planing to use custom templates for email messages
+    #expose:
+    #  - "8055"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8055/server/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    networks:
+      - happyworld-network
+
+  # Optional
+  directus-sync:
+    build:
+      context: ./directus-sync
+      dockerfile: Dockerfile.prod
+    image: local/directus-sync:3.3.0
+    container_name: directus-sync_prod
+    depends_on:
+      - directus
+    environment:
+      DIRECTUS_ADMIN_EMAIL: ${DIRECTUS_EMAIL_SYNC}
+      DIRECTUS_ADMIN_PASSWORD: ${DIRECTUS_PASSWORD_SYNC}
+      DIRECTUS_URL_SYNC: ${DIRECTUS_URL_SYNC}
+    volumes:
+      # or in Dockerfile: COPY directus-sync.config.js /work/directus-sync.config.js
+      #- ./directus-sync/directus-sync.config.js:/work/directus-sync.config.js:ro
+      - ./directus-config:/work/directus-config   # <── Mounts host ./directus-config
+    working_dir: /work
+    entrypoint: ["directus-sync"]
+    profiles:
+      - tools
+    networks:
+      - happyworld-network

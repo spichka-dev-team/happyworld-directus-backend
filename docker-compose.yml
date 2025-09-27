@@ -1,0 +1,75 @@
+networks:
+  happyworld-network:
+    driver: bridge
+
+volumes:
+  postgres_dev_data:
+
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_DATABASE}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - happyworld-network
+
+  directus:
+    build:
+      context: ./directus
+      dockerfile: Dockerfile
+    container_name: directus_dev
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8055:8055"
+    env_file:
+      - .env
+    volumes:
+      - ./directus/database:/directus/database
+      - ./directus/uploads:/directus/uploads
+      #- ./directus/extensions:/directus/extensions   # <── TEMPORARY!!!
+      #- ./directus-config:/directus/directus-config
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8055/server/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    networks:
+      - happyworld-network
+
+  directus-sync:
+    build:
+      context: ./directus-sync
+      dockerfile: Dockerfile
+    image: local/directus-sync:3.3.0
+    container_name: directus-sync_dev
+    depends_on:
+      - directus
+    environment:
+      DIRECTUS_ADMIN_EMAIL: ${DIRECTUS_EMAIL_SYNC}
+      DIRECTUS_ADMIN_PASSWORD: ${DIRECTUS_PASSWORD_SYNC}
+      DIRECTUS_URL_SYNC: ${DIRECTUS_URL_SYNC}
+    volumes:
+      # or in Dockerfile: COPY directus-sync.config.js /work/directus-sync.config.js
+      #- ./directus-sync/directus-sync.config.js:/work/directus-sync.config.js:ro
+      - ./directus-config:/work/directus-config   # <── Mounts host ./directus-config
+    working_dir: /work
+    entrypoint: ["directus-sync"]
+    profiles:
+      - tools
+    networks:
+      - happyworld-network

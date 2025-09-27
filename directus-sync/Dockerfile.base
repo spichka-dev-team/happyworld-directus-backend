@@ -1,0 +1,8 @@
+FROM node:20-alpine
+WORKDIR /work
+
+# Minimal CI image: install directus-sync globally and expose the CLI as the
+# entrypoint. This avoids relying on a mounted wait-for-directus.sh script in CI.
+RUN npm install -g directus-sync@3.3.0
+
+ENTRYPOINT ["directus-sync"]

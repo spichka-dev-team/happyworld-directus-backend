@@ -1,0 +1,43 @@
+name: Deploy and Sync Directus
+
+on:
+  workflow_dispatch: # Manual trigger
+  push:
+    branches:
+      - main
+    paths:
+      - 'directus-config/**' # Only run if something in this folder changes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build directus-sync image (CI-friendly)
+        run: docker build -f directus-sync/Dockerfile.base -t directus-sync ./
+
+      - name: Run directus-sync diff
+        run: |
+          docker run --rm \
+            -v "$PWD:/work" \
+            directus-sync diff \
+            --directus-url "${{ secrets.DIRECTUS_URL }}" \
+            --directus-email "${{ secrets.DIRECTUS_EMAIL }}" \
+            --directus-password "${{ secrets.DIRECTUS_PASSWORD }}" \
+            --debug
+
+      - name: Push changes if any
+        run: |
+          docker run --rm \
+            -v $PWD:/work \
+            directus-sync push \
+            --directus-url "${{ secrets.DIRECTUS_URL }}" \
+            --directus-email "${{ secrets.DIRECTUS_EMAIL }}" \
+            --directus-password "${{ secrets.DIRECTUS_PASSWORD }}" \
+            --debug

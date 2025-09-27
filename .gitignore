@@ -1,0 +1,9 @@
+.specstory
+.llmchats
+
+/directus/uploads/*
+/directus/database/*
+
+.env
+
+temp.txt
