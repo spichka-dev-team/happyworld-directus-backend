@@ -1,0 +1,9 @@
+{
+    "chat.mcp.serverSampling": {
+        "happyworld-directus-backend/.vscode/mcp.json: directus": {
+            "allowedModels": [
+                "copilot/gpt-4.1"
+            ]
+        }
+    }
+}
