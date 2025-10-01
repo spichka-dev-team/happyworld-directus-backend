@@ -1,4 +1,5 @@
 {
+    "plantuml.server": "https://plantuml.vencera.tech/",
     "chat.mcp.serverSampling": {
         "happyworld-directus-backend/.vscode/mcp.json: directus": {
             "allowedModels": [

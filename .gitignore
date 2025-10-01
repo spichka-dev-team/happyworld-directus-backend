@@ -1,9 +1,11 @@
 .specstory
-.llmchats
+.llmstory
+
 
 /directus/uploads/*
 /directus/database/*
 
 .env
 
+temporary_buffer.md
 temp.txt
