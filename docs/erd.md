@@ -5,8 +5,10 @@ hide circle
 hide methods
 skinparam linetype ortho
 
-' NOTE: Directus system fields — `id`, `date_created`, `user_created`, `date_updated`, `user_updated`, `status`, and `sort` —
-' are automatically managed by Directus and intentionally omitted from this ERD for clarity.
+' NOTE: Directus default system fields are explicitly included for all custom collections:
+'   - id (pk), status, sort, date_created, user_created, date_updated, user_updated
+'   - user_created/user_updated reference directus_users.id
+' We don't add any custom duplicates (e.g., created_at). Slug fields are intentionally omitted.
 
 entity "directus_users" as directus_users {
   + id: uuid [pk]
@@ -18,6 +20,13 @@ entity "directus_users" as directus_users {
 
 entity "courses" as courses {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   title: string
   description: text
@@ -29,6 +38,13 @@ entity "courses" as courses {
 
 entity "lessons" as lessons {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   course: uuid -> courses.id
   title: string
@@ -38,6 +54,13 @@ entity "lessons" as lessons {
 
 entity "quizzes" as quizzes {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   course: uuid -> courses.id
   title: string
@@ -46,6 +69,13 @@ entity "quizzes" as quizzes {
 
 entity "questions" as questions {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   quiz: uuid -> quizzes.id
   kind: enum(single, multiple)
@@ -55,6 +85,13 @@ entity "questions" as questions {
 
 entity "answer_options" as answer_options {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   question: uuid -> questions.id
   text: string
@@ -63,6 +100,13 @@ entity "answer_options" as answer_options {
 
 entity "lesson_progress" as lesson_progress {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   user: uuid -> directus_users.id
   lesson: uuid -> lessons.id
@@ -73,6 +117,13 @@ entity "lesson_progress" as lesson_progress {
 
 entity "quiz_attempts" as quiz_attempts {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   user: uuid -> directus_users.id
   quiz: uuid -> quizzes.id
@@ -84,6 +135,13 @@ entity "quiz_attempts" as quiz_attempts {
 
 entity "user_course_progress" as user_course_progress {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   user: uuid -> directus_users.id
   course: uuid -> courses.id
@@ -95,6 +153,13 @@ entity "user_course_progress" as user_course_progress {
 
 entity "subscriptions" as subscriptions {
   + id: uuid [pk]
+  -- system (directus)
+  status: string
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   course: uuid -> courses.id [unique]
   price_cents: int
@@ -104,13 +169,18 @@ entity "subscriptions" as subscriptions {
 
 entity "order_processors" as order_processors {
   + id: uuid [pk]
+  -- system (directus)
+  status: string ' values configured: pending, reviewed, approved, rejected
+  sort: int
+  date_created: datetime
+  user_created: uuid -> directus_users.id
+  date_updated: datetime?
+  user_updated: uuid? -> directus_users.id
   --
   user: uuid -> directus_users.id
   course: uuid -> courses.id
   subscription: uuid -> subscriptions.id
-  status: enum(pending, reviewed, approved, rejected)
   payload: json
-  created_at: datetime
   processed_at: datetime?
 }
 
@@ -133,5 +203,12 @@ courses ||--|| subscriptions : 1–1
 subscriptions ||--o{ order_processors
 directus_users ||--o{ order_processors
 courses ||--o{ order_processors
+
+' Notes:
+' - Quizzes are tests and belong to courses (not lessons).
+' - Slug fields are not used across entities.
+' - Directus default system fields (status/sort/date_* /user_*) are used instead of custom duplicates.
+' - For order_processors, the Directus status field options are configured as: pending, reviewed, approved, rejected.
 @enduml
+
 ```
