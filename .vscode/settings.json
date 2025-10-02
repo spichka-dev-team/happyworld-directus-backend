@@ -1,10 +1,19 @@
 {
-    "plantuml.server": "https://plantuml.vencera.tech/",
     "chat.mcp.serverSampling": {
         "happyworld-directus-backend/.vscode/mcp.json: directus": {
             "allowedModels": [
-                "copilot/gpt-4.1"
+                "copilot/auto",
+                "copilot/claude-sonnet-4.5",
+                "copilot/gpt-4.1",
+                "copilot/gpt-5-codex",
+                "copilot/claude-sonnet-4",
+                "copilot/gpt-5"
             ]
         }
-    }
+    },
+    "chat.mcp.discovery.enabled": {
+        "cursor-workspace": false
+    },
+    "plantuml.server": "https://plantuml.vencera.tech/",
+    "json.validate.enable": false
 }

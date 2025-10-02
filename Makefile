@@ -51,6 +51,7 @@ restart: ## Restart
 shell: ## Exec Shell
 	@docker compose -f $(NAMED_COMPOSE_FILE) exec -it $(BACKEND_SERVICE_NAME) sh
 
+# Quick cleanup: TRUNCATE TABLE directus_sync_id_map;
 psql:
 	@docker compose -f $(NAMED_COMPOSE_FILE) exec -it $(DATABASE_SERVICE_NAME) psql -d directus_dev -U directus_dev
 

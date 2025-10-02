@@ -1,10 +1,19 @@
 {
   "servers": {
-    "directus": {
-      "type": "http",
-      "url": "http://localhost:8055/mcp",
-      "headers": {
-        "Authorization": "Bearer ${input:directus-token}"
+      "directus": {
+        "type": "http",
+        "url": "http://localhost:8055/mcp",
+        "headers": {
+          "Authorization": "Bearer ${input:directus-token}"
+        }
+      },
+      "directus-content": {
+      "command": "npx",
+      "args": ["@directus/content-mcp@latest"],
+      "env": {
+        "DIRECTUS_URL": "http://localhost:8055",
+        "DIRECTUS_USER_EMAIL": "admin@example.com",
+        "DIRECTUS_USER_PASSWORD": "d1r3ctu5"
       }
     }
   },
