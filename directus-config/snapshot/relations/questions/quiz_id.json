@@ -1,0 +1,25 @@
+{
+  "collection": "questions",
+  "field": "quiz_id",
+  "related_collection": "quizzes",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "questions",
+    "many_field": "quiz_id",
+    "one_allowed_collections": null,
+    "one_collection": "quizzes",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "questions",
+    "column": "quiz_id",
+    "foreign_key_table": "quizzes",
+    "foreign_key_column": "id",
+    "constraint_name": "questions_quiz_id_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

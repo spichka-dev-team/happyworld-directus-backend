@@ -3,16 +3,60 @@ type Query {
   directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
   directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
   directus_sync_id_map_by_version(version: String!, id: ID!): version_directus_sync_id_map
+  questions(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [questions!]!
+  questions_by_id(id: ID!, version: String): questions
+  questions_aggregated(groupBy: [String], filter: questions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [questions_aggregated!]!
+  questions_by_version(version: String!, id: ID!): version_questions
+  lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons!]!
+  lessons_by_id(id: ID!, version: String): lessons
+  lessons_aggregated(groupBy: [String], filter: lessons_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [lessons_aggregated!]!
+  lessons_by_version(version: String!, id: ID!): version_lessons
+  courses(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [courses!]!
+  courses_by_id(id: ID!, version: String): courses
+  courses_aggregated(groupBy: [String], filter: courses_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [courses_aggregated!]!
+  courses_by_version(version: String!, id: ID!): version_courses
+  quizzes(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes!]!
+  quizzes_by_id(id: ID!, version: String): quizzes
+  quizzes_aggregated(groupBy: [String], filter: quizzes_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [quizzes_aggregated!]!
+  quizzes_by_version(version: String!, id: ID!): version_quizzes
 }
 
 type Mutation {
   create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
+  create_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_questions_input!]): [questions!]!
+  create_questions_item(data: create_questions_input!): questions
+  create_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_lessons_input!]): [lessons!]!
+  create_lessons_item(data: create_lessons_input!): lessons
+  create_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_courses_input!]): [courses!]!
+  create_courses_item(data: create_courses_input!): courses
+  create_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_quizzes_input!]): [quizzes!]!
+  create_quizzes_item(data: create_quizzes_input!): quizzes
   update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
   update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
+  update_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_questions_input!): [questions!]!
+  update_questions_batch(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_questions_input!]): [questions!]!
+  update_questions_item(id: ID!, data: update_questions_input!): questions
+  update_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_lessons_input!): [lessons!]!
+  update_lessons_batch(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_lessons_input!]): [lessons!]!
+  update_lessons_item(id: ID!, data: update_lessons_input!): lessons
+  update_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_courses_input!): [courses!]!
+  update_courses_batch(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_courses_input!]): [courses!]!
+  update_courses_item(id: ID!, data: update_courses_input!): courses
+  update_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_quizzes_input!): [quizzes!]!
+  update_quizzes_batch(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_quizzes_input!]): [quizzes!]!
+  update_quizzes_item(id: ID!, data: update_quizzes_input!): quizzes
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
   delete_directus_sync_id_map_item(id: ID!): delete_one
+  delete_questions_items(ids: [ID]!): delete_many
+  delete_questions_item(id: ID!): delete_one
+  delete_lessons_items(ids: [ID]!): delete_many
+  delete_lessons_item(id: ID!): delete_one
+  delete_courses_items(ids: [ID]!): delete_many
+  delete_courses_item(id: ID!): delete_one
+  delete_quizzes_items(ids: [ID]!): delete_many
+  delete_quizzes_item(id: ID!): delete_one
 }
 
 type Subscription {
@@ -38,6 +82,10 @@ type Subscription {
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  questions_mutated(event: EventEnum): questions_mutated
+  lessons_mutated(event: EventEnum): lessons_mutated
+  courses_mutated(event: EventEnum): courses_mutated
+  quizzes_mutated(event: EventEnum): quizzes_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -88,6 +136,65 @@ enum EventEnum {
 
 type count_functions {
   count: Int
+}
+
+type courses {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  title: String
+  description: String
+  thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  lessons_count: Int
+  duration_hours: Int
+}
+
+type courses_aggregated {
+  group: JSON
+  countAll: Int
+  count: courses_aggregated_count
+  countDistinct: courses_aggregated_count
+  avg: courses_aggregated_fields
+  sum: courses_aggregated_fields
+  avgDistinct: courses_aggregated_fields
+  sumDistinct: courses_aggregated_fields
+  min: courses_aggregated_fields
+  max: courses_aggregated_fields
+}
+
+type courses_aggregated_count {
+  id: Int
+  status: Int
+  sort: Int
+  user_created: Int
+  date_created: Int
+  user_updated: Int
+  date_updated: Int
+  title: Int
+  description: Int
+  thumbnail: Int
+  video_file: Int
+  lessons_count: Int
+  duration_hours: Int
+}
+
+type courses_aggregated_fields {
+  sort: Float
+  lessons_count: Float
+  duration_hours: Float
+}
+
+type courses_mutated {
+  key: ID!
+  event: EventEnum
+  data: courses
 }
 
 type datetime_functions {
@@ -665,6 +772,182 @@ type directus_webhooks_mutated {
   data: directus_webhooks
 }
 
+type lessons {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  title: String
+  duration_minutes: Int
+  cards_json: JSON
+  cards_json_func: count_functions
+}
+
+type lessons_aggregated {
+  group: JSON
+  countAll: Int
+  count: lessons_aggregated_count
+  countDistinct: lessons_aggregated_count
+  avg: lessons_aggregated_fields
+  sum: lessons_aggregated_fields
+  avgDistinct: lessons_aggregated_fields
+  sumDistinct: lessons_aggregated_fields
+  min: lessons_aggregated_fields
+  max: lessons_aggregated_fields
+}
+
+type lessons_aggregated_count {
+  id: Int
+  status: Int
+  sort: Int
+  user_created: Int
+  date_created: Int
+  user_updated: Int
+  date_updated: Int
+  course_id: Int
+  title: Int
+  duration_minutes: Int
+  cards_json: Int
+}
+
+type lessons_aggregated_fields {
+  sort: Float
+  duration_minutes: Float
+}
+
+type lessons_mutated {
+  key: ID!
+  event: EventEnum
+  data: lessons
+}
+
+type questions {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
+  prompt: String
+  score: Int
+}
+
+type questions_aggregated {
+  group: JSON
+  countAll: Int
+  count: questions_aggregated_count
+  countDistinct: questions_aggregated_count
+  avg: questions_aggregated_fields
+  sum: questions_aggregated_fields
+  avgDistinct: questions_aggregated_fields
+  sumDistinct: questions_aggregated_fields
+  min: questions_aggregated_fields
+  max: questions_aggregated_fields
+}
+
+type questions_aggregated_count {
+  id: Int
+  status: Int
+  sort: Int
+  user_created: Int
+  date_created: Int
+  user_updated: Int
+  date_updated: Int
+  quiz_id: Int
+  prompt: Int
+  score: Int
+}
+
+type questions_aggregated_fields {
+  sort: Float
+  score: Float
+}
+
+type questions_mutated {
+  key: ID!
+  event: EventEnum
+  data: questions
+}
+
+type quizzes {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  title: String
+  passing_score_pct: Int
+}
+
+type quizzes_aggregated {
+  group: JSON
+  countAll: Int
+  count: quizzes_aggregated_count
+  countDistinct: quizzes_aggregated_count
+  avg: quizzes_aggregated_fields
+  sum: quizzes_aggregated_fields
+  avgDistinct: quizzes_aggregated_fields
+  sumDistinct: quizzes_aggregated_fields
+  min: quizzes_aggregated_fields
+  max: quizzes_aggregated_fields
+}
+
+type quizzes_aggregated_count {
+  id: Int
+  status: Int
+  sort: Int
+  user_created: Int
+  date_created: Int
+  user_updated: Int
+  date_updated: Int
+  course_id: Int
+  title: Int
+  passing_score_pct: Int
+}
+
+type quizzes_aggregated_fields {
+  sort: Float
+  passing_score_pct: Float
+}
+
+type quizzes_mutated {
+  key: ID!
+  event: EventEnum
+  data: quizzes
+}
+
+""""""
+type version_courses {
+  id: ID
+  status: String
+  sort: Int
+  user_created: JSON
+  date_created: Date
+  user_updated: JSON
+  date_updated: Date
+  title: String
+  description: String
+  thumbnail: JSON
+  video_file: JSON
+  lessons_count: Int
+  duration_hours: Int
+}
+
 """"""
 type version_directus_sync_id_map {
   id: ID
@@ -672,6 +955,49 @@ type version_directus_sync_id_map {
   sync_id: String
   local_id: String
   created_at: Date
+}
+
+""""""
+type version_lessons {
+  id: ID
+  status: String
+  sort: Int
+  user_created: JSON
+  date_created: Date
+  user_updated: JSON
+  date_updated: Date
+  course_id: JSON
+  title: String
+  duration_minutes: Int
+  cards_json: JSON
+}
+
+""""""
+type version_questions {
+  id: ID
+  status: String
+  sort: Int
+  user_created: JSON
+  date_created: Date
+  user_updated: JSON
+  date_updated: Date
+  quiz_id: JSON
+  prompt: String
+  score: Int
+}
+
+""""""
+type version_quizzes {
+  id: ID
+  status: String
+  sort: Int
+  user_created: JSON
+  date_created: Date
+  user_updated: JSON
+  date_updated: Date
+  course_id: JSON
+  title: String
+  passing_score_pct: Int
 }
 
 input big_int_filter_operators {
@@ -700,12 +1026,199 @@ input count_function_filter_operators {
   count: number_filter_operators
 }
 
+input courses_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  title: string_filter_operators
+  description: string_filter_operators
+  thumbnail: directus_files_filter
+  video_file: directus_files_filter
+  lessons_count: number_filter_operators
+  duration_hours: number_filter_operators
+  _and: [courses_filter]
+  _or: [courses_filter]
+}
+
+input create_courses_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: create_directus_users_input
+  date_created: Date
+  user_updated: create_directus_users_input
+  date_updated: Date
+  title: String
+  description: String
+  thumbnail: create_directus_files_input
+  video_file: create_directus_files_input
+  lessons_count: Int
+  duration_hours: Int
+}
+
+input create_directus_access_input {
+  id: ID
+  role: create_directus_roles_input
+  user: create_directus_users_input
+  policy: create_directus_policies_input
+  sort: Int
+}
+
+input create_directus_files_input {
+  id: ID
+  storage: String!
+  filename_disk: String
+  filename_download: String!
+  title: String
+  type: String
+  folder: create_directus_folders_input
+  uploaded_by: create_directus_users_input
+  created_on: Date
+  modified_by: create_directus_users_input
+  modified_on: Date
+  charset: String
+  filesize: GraphQLBigInt
+  width: Int
+  height: Int
+  duration: Int
+  embed: String
+  description: String
+  location: String
+  tags: JSON
+  metadata: JSON
+  focal_point_x: Int
+  focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
+  uploaded_on: Date
+}
+
+input create_directus_folders_input {
+  id: ID
+  name: String!
+  parent: create_directus_folders_input
+}
+
+input create_directus_permissions_input {
+  id: ID
+  collection: String!
+  action: String!
+  permissions: JSON
+  validation: JSON
+  presets: JSON
+  fields: [String]
+  policy: create_directus_policies_input
+}
+
+input create_directus_policies_input {
+  id: ID
+  name: String!
+  icon: String
+  description: String
+  ip_access: [String]
+
+  """$t:field_options.directus_policies.enforce_tfa"""
+  enforce_tfa: Boolean!
+  admin_access: Boolean!
+  app_access: Boolean!
+  permissions: [create_directus_permissions_input]
+  users: [create_directus_access_input]
+  roles: [create_directus_access_input]
+}
+
+input create_directus_roles_input {
+  id: ID
+  name: String!
+  icon: String
+  description: String
+  parent: create_directus_roles_input
+  children: [create_directus_roles_input]
+  policies: [create_directus_access_input]
+  users: [create_directus_users_input]
+}
+
 input create_directus_sync_id_map_input {
   id: ID
   table: String!
   sync_id: String!
   local_id: String!
   created_at: Date
+}
+
+input create_directus_users_input {
+  id: ID
+  first_name: String
+  last_name: String
+  email: String
+  password: Hash
+  location: String
+  title: String
+  description: String
+  tags: JSON
+  avatar: create_directus_files_input
+  language: String
+  tfa_secret: Hash
+  status: String
+  role: create_directus_roles_input
+  token: Hash
+  last_access: Date
+  last_page: String
+  provider: String
+  external_identifier: String
+  auth_data: JSON
+  email_notifications: Boolean
+  appearance: String
+  theme_dark: String
+  theme_light: String
+  theme_light_overrides: JSON
+  theme_dark_overrides: JSON
+  policies: [create_directus_access_input]
+}
+
+input create_lessons_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: create_directus_users_input
+  date_created: Date
+  user_updated: create_directus_users_input
+  date_updated: Date
+  course_id: create_courses_input
+  title: String
+  duration_minutes: Int
+  cards_json: JSON
+}
+
+input create_questions_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: create_directus_users_input
+  date_created: Date
+  user_updated: create_directus_users_input
+  date_updated: Date
+  quiz_id: create_quizzes_input
+  prompt: String
+  score: Int
+}
+
+input create_quizzes_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: create_directus_users_input
+  date_created: Date
+  user_updated: create_directus_users_input
+  date_updated: Date
+  course_id: create_courses_input
+  title: String
+  passing_score_pct: Int
 }
 
 input date_filter_operators {
@@ -1024,6 +1537,25 @@ input hash_filter_operators {
   _nempty: Boolean
 }
 
+input lessons_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  course_id: courses_filter
+  title: string_filter_operators
+  duration_minutes: number_filter_operators
+  cards_json: string_filter_operators
+  cards_json_func: count_function_filter_operators
+  _and: [lessons_filter]
+  _or: [lessons_filter]
+}
+
 input number_filter_operators {
   _eq: GraphQLStringOrFloat
   _neq: GraphQLStringOrFloat
@@ -1037,6 +1569,40 @@ input number_filter_operators {
   _nnull: Boolean
   _between: [GraphQLStringOrFloat]
   _nbetween: [GraphQLStringOrFloat]
+}
+
+input questions_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  quiz_id: quizzes_filter
+  prompt: string_filter_operators
+  score: number_filter_operators
+  _and: [questions_filter]
+  _or: [questions_filter]
+}
+
+input quizzes_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  course_id: courses_filter
+  title: string_filter_operators
+  passing_score_pct: number_filter_operators
+  _and: [quizzes_filter]
+  _or: [quizzes_filter]
 }
 
 input string_filter_operators {
@@ -1061,10 +1627,177 @@ input string_filter_operators {
   _nempty: Boolean
 }
 
+input update_courses_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: update_directus_users_input
+  date_created: Date
+  user_updated: update_directus_users_input
+  date_updated: Date
+  title: String
+  description: String
+  thumbnail: update_directus_files_input
+  video_file: update_directus_files_input
+  lessons_count: Int
+  duration_hours: Int
+}
+
+input update_directus_access_input {
+  id: ID
+  role: update_directus_roles_input
+  user: update_directus_users_input
+  policy: update_directus_policies_input
+  sort: Int
+}
+
+input update_directus_files_input {
+  id: ID
+  storage: String
+  filename_disk: String
+  filename_download: String
+  title: String
+  type: String
+  folder: update_directus_folders_input
+  uploaded_by: update_directus_users_input
+  created_on: Date
+  modified_by: update_directus_users_input
+  modified_on: Date
+  charset: String
+  filesize: GraphQLBigInt
+  width: Int
+  height: Int
+  duration: Int
+  embed: String
+  description: String
+  location: String
+  tags: JSON
+  metadata: JSON
+  focal_point_x: Int
+  focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
+  uploaded_on: Date
+}
+
+input update_directus_folders_input {
+  id: ID
+  name: String
+  parent: update_directus_folders_input
+}
+
+input update_directus_permissions_input {
+  id: ID
+  collection: String
+  action: String
+  permissions: JSON
+  validation: JSON
+  presets: JSON
+  fields: [String]
+  policy: update_directus_policies_input
+}
+
+input update_directus_policies_input {
+  id: ID
+  name: String
+  icon: String
+  description: String
+  ip_access: [String]
+
+  """$t:field_options.directus_policies.enforce_tfa"""
+  enforce_tfa: Boolean
+  admin_access: Boolean
+  app_access: Boolean
+  permissions: [update_directus_permissions_input]
+  users: [update_directus_access_input]
+  roles: [update_directus_access_input]
+}
+
+input update_directus_roles_input {
+  id: ID
+  name: String
+  icon: String
+  description: String
+  parent: update_directus_roles_input
+  children: [update_directus_roles_input]
+  policies: [update_directus_access_input]
+  users: [update_directus_users_input]
+}
+
 input update_directus_sync_id_map_input {
   id: ID
   table: String
   sync_id: String
   local_id: String
   created_at: Date
+}
+
+input update_directus_users_input {
+  id: ID
+  first_name: String
+  last_name: String
+  email: String
+  password: Hash
+  location: String
+  title: String
+  description: String
+  tags: JSON
+  avatar: update_directus_files_input
+  language: String
+  tfa_secret: Hash
+  status: String
+  role: update_directus_roles_input
+  token: Hash
+  last_access: Date
+  last_page: String
+  provider: String
+  external_identifier: String
+  auth_data: JSON
+  email_notifications: Boolean
+  appearance: String
+  theme_dark: String
+  theme_light: String
+  theme_light_overrides: JSON
+  theme_dark_overrides: JSON
+  policies: [update_directus_access_input]
+}
+
+input update_lessons_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: update_directus_users_input
+  date_created: Date
+  user_updated: update_directus_users_input
+  date_updated: Date
+  course_id: update_courses_input
+  title: String
+  duration_minutes: Int
+  cards_json: JSON
+}
+
+input update_questions_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: update_directus_users_input
+  date_created: Date
+  user_updated: update_directus_users_input
+  date_updated: Date
+  quiz_id: update_quizzes_input
+  prompt: String
+  score: Int
+}
+
+input update_quizzes_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: update_directus_users_input
+  date_created: Date
+  user_updated: update_directus_users_input
+  date_updated: Date
+  course_id: update_courses_input
+  title: String
+  passing_score_pct: Int
 }

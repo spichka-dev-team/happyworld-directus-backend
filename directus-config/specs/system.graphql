@@ -263,6 +263,10 @@ type Subscription {
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  questions_mutated(event: EventEnum): questions_mutated
+  lessons_mutated(event: EventEnum): lessons_mutated
+  courses_mutated(event: EventEnum): courses_mutated
+  quizzes_mutated(event: EventEnum): quizzes_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -347,6 +351,30 @@ type auth_tokens {
 
 type count_functions {
   count: Int
+}
+
+type courses {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  title: String
+  description: String
+  thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  lessons_count: Int
+  duration_hours: Int
+}
+
+type courses_mutated {
+  key: ID!
+  event: EventEnum
+  data: courses
 }
 
 type datetime_functions {
@@ -1605,10 +1633,75 @@ type directus_webhooks_mutated {
   data: directus_webhooks
 }
 
+type lessons {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  title: String
+  duration_minutes: Int
+  cards_json: JSON
+  cards_json_func: count_functions
+}
+
+type lessons_mutated {
+  key: ID!
+  event: EventEnum
+  data: lessons
+}
+
 type policy_me_globals_type {
   enforce_tfa: Boolean
   app_access: Boolean
   admin_access: Boolean
+}
+
+type questions {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
+  prompt: String
+  score: Int
+}
+
+type questions_mutated {
+  key: ID!
+  event: EventEnum
+  data: questions
+}
+
+type quizzes {
+  id: ID!
+  status: String
+  sort: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  date_updated: Date
+  date_updated_func: datetime_functions
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  title: String
+  passing_score_pct: Int
+}
+
+type quizzes_mutated {
+  key: ID!
+  event: EventEnum
+  data: quizzes
 }
 
 type server_info {
@@ -1688,6 +1781,26 @@ input boolean_filter_operators {
 
 input count_function_filter_operators {
   count: number_filter_operators
+}
+
+input courses_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  title: string_filter_operators
+  description: string_filter_operators
+  thumbnail: directus_files_filter
+  video_file: directus_files_filter
+  lessons_count: number_filter_operators
+  duration_hours: number_filter_operators
+  _and: [courses_filter]
+  _or: [courses_filter]
 }
 
 input create_directus_access_input {
@@ -2497,6 +2610,23 @@ input number_filter_operators {
   _nnull: Boolean
   _between: [GraphQLStringOrFloat]
   _nbetween: [GraphQLStringOrFloat]
+}
+
+input quizzes_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  course_id: courses_filter
+  title: string_filter_operators
+  passing_score_pct: number_filter_operators
+  _and: [quizzes_filter]
+  _or: [quizzes_filter]
 }
 
 input string_filter_operators {
