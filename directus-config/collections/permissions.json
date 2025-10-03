@@ -1,1 +1,80 @@
-[]
+[
+  {
+    "collection": "courses",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "ebef8153-8df4-4c68-99fa-4260df0ecc74"
+  },
+  {
+    "collection": "directus_files",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "8212b322-a795-42c9-a4c0-bcf2e6e90f98"
+  },
+  {
+    "collection": "directus_users",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "first_name",
+      "last_name",
+      "email",
+      "avatar",
+      "id",
+      "role",
+      "status"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "795fccde-8bac-44c0-94a8-98d247d30d87"
+  },
+  {
+    "collection": "lessons",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "dee27207-f9b0-4d08-b60e-dcc60ad5ee24"
+  },
+  {
+    "collection": "questions",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "55aa6ab3-9288-41ea-b024-da219db4adf6"
+  },
+  {
+    "collection": "quizzes",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "b29602dd-10f6-4158-bac9-bcbd0f3adda5"
+  }
+]
