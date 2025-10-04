@@ -31,7 +31,6 @@ entity "courses" as courses {
   title: string
   description: text
   thumbnail: uuid -> directus_files.id
-  video_file: uuid -> directus_files.id
   lessons_count: int
   duration_hours: int
 }
@@ -50,6 +49,8 @@ entity "lessons" as lessons {
   title: string
   duration_minutes: int
   cards_json: json
+  video_file: uuid -> directus_files.id
+  position: int
 }
 
 entity "quizzes" as quizzes {
@@ -65,6 +66,7 @@ entity "quizzes" as quizzes {
   course: uuid -> courses.id
   title: string
   passing_score_pct: int
+  position: int
 }
 
 entity "questions" as questions {
@@ -81,6 +83,7 @@ entity "questions" as questions {
   kind: enum(single, multiple)
   prompt: text
   score: int
+  position: int
 }
 
 entity "answer_options" as answer_options {
@@ -96,6 +99,7 @@ entity "answer_options" as answer_options {
   question: uuid -> questions.id
   text: string
   is_correct: boolean
+  position: int
 }
 
 entity "lesson_progress" as lesson_progress {
