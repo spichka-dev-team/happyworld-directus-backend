@@ -10,9 +10,12 @@
     "field": "course_id",
     "group": null,
     "hidden": false,
-    "interface": null,
+    "interface": "select-dropdown-m2o",
     "note": null,
-    "options": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{title}}"
+    },
     "readonly": false,
     "required": false,
     "sort": 8,

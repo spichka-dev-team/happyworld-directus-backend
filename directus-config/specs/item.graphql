@@ -7,10 +7,6 @@ type Query {
   questions_by_id(id: ID!, version: String): questions
   questions_aggregated(groupBy: [String], filter: questions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [questions_aggregated!]!
   questions_by_version(version: String!, id: ID!): version_questions
-  lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons!]!
-  lessons_by_id(id: ID!, version: String): lessons
-  lessons_aggregated(groupBy: [String], filter: lessons_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [lessons_aggregated!]!
-  lessons_by_version(version: String!, id: ID!): version_lessons
   courses(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [courses!]!
   courses_by_id(id: ID!, version: String): courses
   courses_aggregated(groupBy: [String], filter: courses_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [courses_aggregated!]!
@@ -19,6 +15,10 @@ type Query {
   quizzes_by_id(id: ID!, version: String): quizzes
   quizzes_aggregated(groupBy: [String], filter: quizzes_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [quizzes_aggregated!]!
   quizzes_by_version(version: String!, id: ID!): version_quizzes
+  lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons!]!
+  lessons_by_id(id: ID!, version: String): lessons
+  lessons_aggregated(groupBy: [String], filter: lessons_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [lessons_aggregated!]!
+  lessons_by_version(version: String!, id: ID!): version_lessons
 }
 
 type Mutation {
@@ -26,37 +26,37 @@ type Mutation {
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
   create_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_questions_input!]): [questions!]!
   create_questions_item(data: create_questions_input!): questions
-  create_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_lessons_input!]): [lessons!]!
-  create_lessons_item(data: create_lessons_input!): lessons
   create_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_courses_input!]): [courses!]!
   create_courses_item(data: create_courses_input!): courses
   create_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_quizzes_input!]): [quizzes!]!
   create_quizzes_item(data: create_quizzes_input!): quizzes
+  create_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_lessons_input!]): [lessons!]!
+  create_lessons_item(data: create_lessons_input!): lessons
   update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
   update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
   update_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_questions_input!): [questions!]!
   update_questions_batch(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_questions_input!]): [questions!]!
   update_questions_item(id: ID!, data: update_questions_input!): questions
-  update_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_lessons_input!): [lessons!]!
-  update_lessons_batch(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_lessons_input!]): [lessons!]!
-  update_lessons_item(id: ID!, data: update_lessons_input!): lessons
   update_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_courses_input!): [courses!]!
   update_courses_batch(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_courses_input!]): [courses!]!
   update_courses_item(id: ID!, data: update_courses_input!): courses
   update_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_quizzes_input!): [quizzes!]!
   update_quizzes_batch(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_quizzes_input!]): [quizzes!]!
   update_quizzes_item(id: ID!, data: update_quizzes_input!): quizzes
+  update_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_lessons_input!): [lessons!]!
+  update_lessons_batch(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_lessons_input!]): [lessons!]!
+  update_lessons_item(id: ID!, data: update_lessons_input!): lessons
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
   delete_directus_sync_id_map_item(id: ID!): delete_one
   delete_questions_items(ids: [ID]!): delete_many
   delete_questions_item(id: ID!): delete_one
-  delete_lessons_items(ids: [ID]!): delete_many
-  delete_lessons_item(id: ID!): delete_one
   delete_courses_items(ids: [ID]!): delete_many
   delete_courses_item(id: ID!): delete_one
   delete_quizzes_items(ids: [ID]!): delete_many
   delete_quizzes_item(id: ID!): delete_one
+  delete_lessons_items(ids: [ID]!): delete_many
+  delete_lessons_item(id: ID!): delete_one
 }
 
 type Subscription {
@@ -83,9 +83,9 @@ type Subscription {
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   questions_mutated(event: EventEnum): questions_mutated
-  lessons_mutated(event: EventEnum): lessons_mutated
   courses_mutated(event: EventEnum): courses_mutated
   quizzes_mutated(event: EventEnum): quizzes_mutated
+  lessons_mutated(event: EventEnum): lessons_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -151,7 +151,6 @@ type courses {
   title: String
   description: String
   thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
-  video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   lessons_count: Int
   duration_hours: Int
 }
@@ -180,7 +179,6 @@ type courses_aggregated_count {
   title: Int
   description: Int
   thumbnail: Int
-  video_file: Int
   lessons_count: Int
   duration_hours: Int
 }
@@ -787,6 +785,8 @@ type lessons {
   duration_minutes: Int
   cards_json: JSON
   cards_json_func: count_functions
+  video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  position: Int
 }
 
 type lessons_aggregated {
@@ -814,11 +814,14 @@ type lessons_aggregated_count {
   title: Int
   duration_minutes: Int
   cards_json: Int
+  video_file: Int
+  position: Int
 }
 
 type lessons_aggregated_fields {
   sort: Float
   duration_minutes: Float
+  position: Float
 }
 
 type lessons_mutated {
@@ -840,6 +843,7 @@ type questions {
   quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
   prompt: String
   score: Int
+  position: Int
 }
 
 type questions_aggregated {
@@ -866,11 +870,13 @@ type questions_aggregated_count {
   quiz_id: Int
   prompt: Int
   score: Int
+  position: Int
 }
 
 type questions_aggregated_fields {
   sort: Float
   score: Float
+  position: Float
 }
 
 type questions_mutated {
@@ -892,6 +898,7 @@ type quizzes {
   course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   title: String
   passing_score_pct: Int
+  position: Int
 }
 
 type quizzes_aggregated {
@@ -918,11 +925,13 @@ type quizzes_aggregated_count {
   course_id: Int
   title: Int
   passing_score_pct: Int
+  position: Int
 }
 
 type quizzes_aggregated_fields {
   sort: Float
   passing_score_pct: Float
+  position: Float
 }
 
 type quizzes_mutated {
@@ -943,7 +952,6 @@ type version_courses {
   title: String
   description: String
   thumbnail: JSON
-  video_file: JSON
   lessons_count: Int
   duration_hours: Int
 }
@@ -970,6 +978,8 @@ type version_lessons {
   title: String
   duration_minutes: Int
   cards_json: JSON
+  video_file: JSON
+  position: Int
 }
 
 """"""
@@ -984,6 +994,7 @@ type version_questions {
   quiz_id: JSON
   prompt: String
   score: Int
+  position: Int
 }
 
 """"""
@@ -998,6 +1009,7 @@ type version_quizzes {
   course_id: JSON
   title: String
   passing_score_pct: Int
+  position: Int
 }
 
 input big_int_filter_operators {
@@ -1039,7 +1051,6 @@ input courses_filter {
   title: string_filter_operators
   description: string_filter_operators
   thumbnail: directus_files_filter
-  video_file: directus_files_filter
   lessons_count: number_filter_operators
   duration_hours: number_filter_operators
   _and: [courses_filter]
@@ -1057,7 +1068,6 @@ input create_courses_input {
   title: String
   description: String
   thumbnail: create_directus_files_input
-  video_file: create_directus_files_input
   lessons_count: Int
   duration_hours: Int
 }
@@ -1193,6 +1203,8 @@ input create_lessons_input {
   title: String
   duration_minutes: Int
   cards_json: JSON
+  video_file: create_directus_files_input
+  position: Int
 }
 
 input create_questions_input {
@@ -1206,6 +1218,7 @@ input create_questions_input {
   quiz_id: create_quizzes_input
   prompt: String
   score: Int
+  position: Int
 }
 
 input create_quizzes_input {
@@ -1219,6 +1232,7 @@ input create_quizzes_input {
   course_id: create_courses_input
   title: String
   passing_score_pct: Int
+  position: Int
 }
 
 input date_filter_operators {
@@ -1552,6 +1566,8 @@ input lessons_filter {
   duration_minutes: number_filter_operators
   cards_json: string_filter_operators
   cards_json_func: count_function_filter_operators
+  video_file: directus_files_filter
+  position: number_filter_operators
   _and: [lessons_filter]
   _or: [lessons_filter]
 }
@@ -1584,6 +1600,7 @@ input questions_filter {
   quiz_id: quizzes_filter
   prompt: string_filter_operators
   score: number_filter_operators
+  position: number_filter_operators
   _and: [questions_filter]
   _or: [questions_filter]
 }
@@ -1601,6 +1618,7 @@ input quizzes_filter {
   course_id: courses_filter
   title: string_filter_operators
   passing_score_pct: number_filter_operators
+  position: number_filter_operators
   _and: [quizzes_filter]
   _or: [quizzes_filter]
 }
@@ -1638,7 +1656,6 @@ input update_courses_input {
   title: String
   description: String
   thumbnail: update_directus_files_input
-  video_file: update_directus_files_input
   lessons_count: Int
   duration_hours: Int
 }
@@ -1774,6 +1791,8 @@ input update_lessons_input {
   title: String
   duration_minutes: Int
   cards_json: JSON
+  video_file: update_directus_files_input
+  position: Int
 }
 
 input update_questions_input {
@@ -1787,6 +1806,7 @@ input update_questions_input {
   quiz_id: update_quizzes_input
   prompt: String
   score: Int
+  position: Int
 }
 
 input update_quizzes_input {
@@ -1800,4 +1820,5 @@ input update_quizzes_input {
   course_id: update_courses_input
   title: String
   passing_score_pct: Int
+  position: Int
 }
