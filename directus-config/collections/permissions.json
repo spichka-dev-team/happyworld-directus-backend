@@ -6,7 +6,12 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "*"
+      "id",
+      "title",
+      "description",
+      "thumbnail",
+      "lessons_count",
+      "duration_hours"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "ebef8153-8df4-4c68-99fa-4260df0ecc74"
@@ -48,7 +53,13 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "*"
+      "id",
+      "course_id",
+      "title",
+      "duration_minutes",
+      "cards_json",
+      "video_file",
+      "position"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "dee27207-f9b0-4d08-b60e-dcc60ad5ee24"
@@ -60,7 +71,11 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "*"
+      "id",
+      "quiz_id",
+      "prompt",
+      "score",
+      "position"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "55aa6ab3-9288-41ea-b024-da219db4adf6"
@@ -72,7 +87,11 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "*"
+      "id",
+      "course_id",
+      "title",
+      "passing_score_pct",
+      "position"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "b29602dd-10f6-4158-bac9-bcbd0f3adda5"
