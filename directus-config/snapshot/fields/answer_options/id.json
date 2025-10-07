@@ -1,23 +1,23 @@
 {
-  "collection": "lessons",
-  "field": "video_file",
+  "collection": "answer_options",
+  "field": "id",
   "type": "uuid",
   "meta": {
-    "collection": "lessons",
+    "collection": "answer_options",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "video_file",
+    "field": "id",
     "group": null,
-    "hidden": false,
-    "interface": "file",
+    "hidden": true,
+    "interface": "input",
     "note": null,
     "options": null,
-    "readonly": false,
+    "readonly": true,
     "required": false,
-    "sort": 13,
+    "sort": 1,
     "special": [
-      "file"
+      "uuid"
     ],
     "translations": null,
     "validation": null,
@@ -25,21 +25,21 @@
     "width": "full"
   },
   "schema": {
-    "name": "video_file",
-    "table": "lessons",
+    "name": "id",
+    "table": "answer_options",
     "data_type": "uuid",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,
     "numeric_scale": null,
-    "is_nullable": true,
-    "is_unique": false,
+    "is_nullable": false,
+    "is_unique": true,
     "is_indexed": false,
-    "is_primary_key": false,
+    "is_primary_key": true,
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
-    "foreign_key_column": "id"
+    "foreign_key_table": null,
+    "foreign_key_column": null
   }
 }

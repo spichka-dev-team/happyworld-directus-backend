@@ -1,23 +1,26 @@
 {
-  "collection": "lessons",
-  "field": "video_file",
+  "collection": "quiz_attempts",
+  "field": "quiz_id",
   "type": "uuid",
   "meta": {
-    "collection": "lessons",
+    "collection": "quiz_attempts",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "video_file",
+    "field": "quiz_id",
     "group": null,
     "hidden": false,
-    "interface": "file",
+    "interface": "select-dropdown-m2o",
     "note": null,
-    "options": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{title}}"
+    },
     "readonly": false,
     "required": false,
-    "sort": 13,
+    "sort": 8,
     "special": [
-      "file"
+      "m2o"
     ],
     "translations": null,
     "validation": null,
@@ -25,8 +28,8 @@
     "width": "full"
   },
   "schema": {
-    "name": "video_file",
-    "table": "lessons",
+    "name": "quiz_id",
+    "table": "quiz_attempts",
     "data_type": "uuid",
     "default_value": null,
     "max_length": null,
@@ -39,7 +42,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
+    "foreign_key_table": "quizzes",
     "foreign_key_column": "id"
   }
 }

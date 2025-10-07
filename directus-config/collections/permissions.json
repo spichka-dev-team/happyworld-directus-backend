@@ -1,5 +1,21 @@
 [
   {
+    "collection": "answer_options",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "question_id",
+      "text",
+      "position",
+      "is_correct"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "8b2ea1b9-c34c-4bff-ae94-8c08df86e02f"
+  },
+  {
     "collection": "courses",
     "action": "read",
     "permissions": null,
@@ -59,7 +75,8 @@
       "duration_minutes",
       "cards_json",
       "video_file",
-      "position"
+      "position",
+      "video_url"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "dee27207-f9b0-4d08-b60e-dcc60ad5ee24"

@@ -1,28 +1,28 @@
 {
-  "collection": "questions",
+  "collection": "user_course_progress",
   "meta": {
     "accountability": "all",
     "archive_app_filter": true,
     "archive_field": "status",
     "archive_value": "archived",
     "collapse": "open",
-    "collection": "questions",
+    "collection": "user_course_progress",
     "color": null,
     "display_template": null,
-    "group": "Courses_Folder",
+    "group": "Progresses_Folder",
     "hidden": false,
     "icon": null,
     "item_duplication_fields": null,
     "note": null,
     "preview_url": null,
     "singleton": false,
-    "sort": 4,
+    "sort": 3,
     "sort_field": "sort",
     "translations": null,
     "unarchive_value": "draft",
     "versioning": false
   },
   "schema": {
-    "name": "questions"
+    "name": "user_course_progress"
   }
 }

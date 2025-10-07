@@ -1,23 +1,25 @@
 {
-  "collection": "lessons",
-  "field": "video_file",
+  "collection": "user_course_progress",
+  "field": "user_created",
   "type": "uuid",
   "meta": {
-    "collection": "lessons",
+    "collection": "user_course_progress",
     "conditions": null,
-    "display": null,
+    "display": "user",
     "display_options": null,
-    "field": "video_file",
+    "field": "user_created",
     "group": null,
     "hidden": false,
-    "interface": "file",
+    "interface": "select-dropdown-m2o",
     "note": null,
-    "options": null,
+    "options": {
+      "template": "{{avatar}} {{first_name}} {{last_name}}"
+    },
     "readonly": false,
     "required": false,
-    "sort": 13,
+    "sort": 4,
     "special": [
-      "file"
+      "user-created"
     ],
     "translations": null,
     "validation": null,
@@ -25,8 +27,8 @@
     "width": "full"
   },
   "schema": {
-    "name": "video_file",
-    "table": "lessons",
+    "name": "user_created",
+    "table": "user_course_progress",
     "data_type": "uuid",
     "default_value": null,
     "max_length": null,
@@ -39,7 +41,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
+    "foreign_key_table": "directus_users",
     "foreign_key_column": "id"
   }
 }

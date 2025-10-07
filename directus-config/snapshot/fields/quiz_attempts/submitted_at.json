@@ -1,33 +1,31 @@
 {
-  "collection": "lessons",
-  "field": "video_file",
-  "type": "uuid",
+  "collection": "quiz_attempts",
+  "field": "submitted_at",
+  "type": "dateTime",
   "meta": {
-    "collection": "lessons",
+    "collection": "quiz_attempts",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "video_file",
+    "field": "submitted_at",
     "group": null,
     "hidden": false,
-    "interface": "file",
+    "interface": "datetime",
     "note": null,
     "options": null,
     "readonly": false,
     "required": false,
-    "sort": 13,
-    "special": [
-      "file"
-    ],
+    "sort": 9,
+    "special": null,
     "translations": null,
     "validation": null,
     "validation_message": null,
     "width": "full"
   },
   "schema": {
-    "name": "video_file",
-    "table": "lessons",
-    "data_type": "uuid",
+    "name": "submitted_at",
+    "table": "quiz_attempts",
+    "data_type": "timestamp without time zone",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,
@@ -39,7 +37,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
-    "foreign_key_column": "id"
+    "foreign_key_table": null,
+    "foreign_key_column": null
   }
 }

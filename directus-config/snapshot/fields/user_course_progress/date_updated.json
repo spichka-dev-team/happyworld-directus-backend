@@ -1,33 +1,35 @@
 {
-  "collection": "lessons",
-  "field": "video_file",
-  "type": "uuid",
+  "collection": "user_course_progress",
+  "field": "date_updated",
+  "type": "timestamp",
   "meta": {
-    "collection": "lessons",
+    "collection": "user_course_progress",
     "conditions": null,
-    "display": null,
-    "display_options": null,
-    "field": "video_file",
+    "display": "datetime",
+    "display_options": {
+      "relative": true
+    },
+    "field": "date_updated",
     "group": null,
-    "hidden": false,
-    "interface": "file",
+    "hidden": true,
+    "interface": "datetime",
     "note": null,
     "options": null,
-    "readonly": false,
+    "readonly": true,
     "required": false,
-    "sort": 13,
+    "sort": 7,
     "special": [
-      "file"
+      "date-updated"
     ],
     "translations": null,
     "validation": null,
     "validation_message": null,
-    "width": "full"
+    "width": "half"
   },
   "schema": {
-    "name": "video_file",
-    "table": "lessons",
-    "data_type": "uuid",
+    "name": "date_updated",
+    "table": "user_course_progress",
+    "data_type": "timestamp with time zone",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,
@@ -39,7 +41,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
-    "foreign_key_column": "id"
+    "foreign_key_table": null,
+    "foreign_key_column": null
   }
 }

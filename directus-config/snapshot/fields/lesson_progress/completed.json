@@ -1,23 +1,23 @@
 {
-  "collection": "lessons",
-  "field": "video_file",
-  "type": "uuid",
+  "collection": "lesson_progress",
+  "field": "completed",
+  "type": "boolean",
   "meta": {
-    "collection": "lessons",
+    "collection": "lesson_progress",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "video_file",
+    "field": "completed",
     "group": null,
     "hidden": false,
-    "interface": "file",
+    "interface": "boolean",
     "note": null,
     "options": null,
     "readonly": false,
     "required": false,
-    "sort": 13,
+    "sort": 9,
     "special": [
-      "file"
+      "cast-boolean"
     ],
     "translations": null,
     "validation": null,
@@ -25,9 +25,9 @@
     "width": "full"
   },
   "schema": {
-    "name": "video_file",
-    "table": "lessons",
-    "data_type": "uuid",
+    "name": "completed",
+    "table": "lesson_progress",
+    "data_type": "boolean",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,
@@ -39,7 +39,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
-    "foreign_key_column": "id"
+    "foreign_key_table": null,
+    "foreign_key_column": null
   }
 }
