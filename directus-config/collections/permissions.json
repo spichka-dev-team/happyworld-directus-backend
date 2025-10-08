@@ -27,7 +27,9 @@
       "description",
       "thumbnail",
       "lessons_count",
-      "duration_hours"
+      "duration_hours",
+      "lessons",
+      "quizess"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "ebef8153-8df4-4c68-99fa-4260df0ecc74"
@@ -104,7 +106,8 @@
       "cards_json",
       "video_file",
       "position",
-      "video_url"
+      "video_url",
+      "lesson_progresses"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "dee27207-f9b0-4d08-b60e-dcc60ad5ee24"
@@ -165,7 +168,8 @@
       "course_id",
       "title",
       "passing_score_pct",
-      "position"
+      "position",
+      "quiz_attempts"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "b29602dd-10f6-4158-bac9-bcbd0f3adda5"

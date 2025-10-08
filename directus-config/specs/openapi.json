@@ -13229,6 +13229,36 @@
           "duration_hours": {
             "nullable": true,
             "type": "integer"
+          },
+          "lessons": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsLessons"
+                }
+              ]
+            }
+          },
+          "quizess": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsQuizzes"
+                }
+              ]
+            }
           }
         },
         "x-collection": "courses",
@@ -13309,6 +13339,21 @@
           "position": {
             "nullable": true,
             "type": "integer"
+          },
+          "quiz_attempts": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsQuizAttempts"
+                }
+              ]
+            }
           }
         },
         "x-collection": "quizzes",
@@ -13408,6 +13453,21 @@
           "video_url": {
             "nullable": true,
             "type": "string"
+          },
+          "lesson_progresses": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsLessonProgress"
+                }
+              ]
+            }
           }
         },
         "x-collection": "lessons",

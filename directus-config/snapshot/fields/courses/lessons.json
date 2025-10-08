@@ -1,0 +1,27 @@
+{
+  "collection": "courses",
+  "field": "lessons",
+  "type": "alias",
+  "meta": {
+    "collection": "courses",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "lessons",
+    "group": null,
+    "hidden": false,
+    "interface": null,
+    "note": null,
+    "options": null,
+    "readonly": false,
+    "required": false,
+    "sort": 14,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

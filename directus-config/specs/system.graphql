@@ -394,6 +394,10 @@ type courses {
   thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   lessons_count: Int
   duration_hours: Int
+  lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons]
+  lessons_func: count_functions
+  quizess(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes]
+  quizess_func: count_functions
 }
 
 type courses_mutated {
@@ -1698,6 +1702,8 @@ type lessons {
   video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   position: Int
   video_url: String
+  lesson_progresses(filter: lesson_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lesson_progress]
+  lesson_progresses_func: count_functions
 }
 
 type lessons_mutated {
@@ -1771,6 +1777,8 @@ type quizzes {
   title: String
   passing_score_pct: Int
   position: Int
+  quiz_attempts(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quiz_attempts]
+  quiz_attempts_func: count_functions
 }
 
 type quizzes_mutated {
@@ -1895,6 +1903,10 @@ input courses_filter {
   thumbnail: directus_files_filter
   lessons_count: number_filter_operators
   duration_hours: number_filter_operators
+  lessons: lessons_filter
+  lessons_func: count_function_filter_operators
+  quizess: quizzes_filter
+  quizess_func: count_function_filter_operators
   _and: [courses_filter]
   _or: [courses_filter]
 }
@@ -2693,6 +2705,24 @@ input hash_filter_operators {
   _nempty: Boolean
 }
 
+input lesson_progress_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  lesson_id: lessons_filter
+  completed: boolean_filter_operators
+  completed_at: date_filter_operators
+  completed_at_func: datetime_function_filter_operators
+  _and: [lesson_progress_filter]
+  _or: [lesson_progress_filter]
+}
+
 input lessons_filter {
   id: string_filter_operators
   status: string_filter_operators
@@ -2711,6 +2741,8 @@ input lessons_filter {
   video_file: directus_files_filter
   position: number_filter_operators
   video_url: string_filter_operators
+  lesson_progresses: lesson_progress_filter
+  lesson_progresses_func: count_function_filter_operators
   _and: [lessons_filter]
   _or: [lessons_filter]
 }
@@ -2748,6 +2780,25 @@ input questions_filter {
   _or: [questions_filter]
 }
 
+input quiz_attempts_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  quiz_id: quizzes_filter
+  submitted_at: date_filter_operators
+  submitted_at_func: datetime_function_filter_operators
+  score_pct: number_filter_operators
+  passed: boolean_filter_operators
+  _and: [quiz_attempts_filter]
+  _or: [quiz_attempts_filter]
+}
+
 input quizzes_filter {
   id: string_filter_operators
   status: string_filter_operators
@@ -2762,6 +2813,8 @@ input quizzes_filter {
   title: string_filter_operators
   passing_score_pct: number_filter_operators
   position: number_filter_operators
+  quiz_attempts: quiz_attempts_filter
+  quiz_attempts_func: count_function_filter_operators
   _and: [quizzes_filter]
   _or: [quizzes_filter]
 }

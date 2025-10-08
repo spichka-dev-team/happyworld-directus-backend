@@ -1,0 +1,27 @@
+{
+  "collection": "quizzes",
+  "field": "quiz_attempts",
+  "type": "alias",
+  "meta": {
+    "collection": "quizzes",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "quiz_attempts",
+    "group": null,
+    "hidden": false,
+    "interface": null,
+    "note": null,
+    "options": null,
+    "readonly": false,
+    "required": false,
+    "sort": 12,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

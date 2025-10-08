@@ -1,0 +1,27 @@
+{
+  "collection": "lessons",
+  "field": "lesson_progresses",
+  "type": "alias",
+  "meta": {
+    "collection": "lessons",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "lesson_progresses",
+    "group": null,
+    "hidden": false,
+    "interface": null,
+    "note": null,
+    "options": null,
+    "readonly": false,
+    "required": false,
+    "sort": 15,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

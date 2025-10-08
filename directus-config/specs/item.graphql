@@ -255,6 +255,10 @@ type courses {
   thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   lessons_count: Int
   duration_hours: Int
+  lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons]
+  lessons_func: count_functions
+  quizess(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes]
+  quizess_func: count_functions
 }
 
 type courses_aggregated {
@@ -283,6 +287,8 @@ type courses_aggregated_count {
   thumbnail: Int
   lessons_count: Int
   duration_hours: Int
+  lessons: Int
+  quizess: Int
 }
 
 type courses_aggregated_fields {
@@ -942,6 +948,8 @@ type lessons {
   video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   position: Int
   video_url: String
+  lesson_progresses(filter: lesson_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lesson_progress]
+  lesson_progresses_func: count_functions
 }
 
 type lessons_aggregated {
@@ -972,6 +980,7 @@ type lessons_aggregated_count {
   video_file: Int
   position: Int
   video_url: Int
+  lesson_progresses: Int
 }
 
 type lessons_aggregated_fields {
@@ -1110,6 +1119,8 @@ type quizzes {
   title: String
   passing_score_pct: Int
   position: Int
+  quiz_attempts(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quiz_attempts]
+  quiz_attempts_func: count_functions
 }
 
 type quizzes_aggregated {
@@ -1137,6 +1148,7 @@ type quizzes_aggregated_count {
   title: Int
   passing_score_pct: Int
   position: Int
+  quiz_attempts: Int
 }
 
 type quizzes_aggregated_fields {
@@ -1236,6 +1248,8 @@ type version_courses {
   thumbnail: JSON
   lessons_count: Int
   duration_hours: Int
+  lessons: JSON
+  quizess: JSON
 }
 
 """"""
@@ -1277,6 +1291,7 @@ type version_lessons {
   video_file: JSON
   position: Int
   video_url: String
+  lesson_progresses: JSON
 }
 
 """"""
@@ -1322,6 +1337,7 @@ type version_quizzes {
   title: String
   passing_score_pct: Int
   position: Int
+  quiz_attempts: JSON
 }
 
 """"""
@@ -1398,6 +1414,10 @@ input courses_filter {
   thumbnail: directus_files_filter
   lessons_count: number_filter_operators
   duration_hours: number_filter_operators
+  lessons: lessons_filter
+  lessons_func: count_function_filter_operators
+  quizess: quizzes_filter
+  quizess_func: count_function_filter_operators
   _and: [courses_filter]
   _or: [courses_filter]
 }
@@ -1429,6 +1449,8 @@ input create_courses_input {
   thumbnail: create_directus_files_input
   lessons_count: Int
   duration_hours: Int
+  lessons: [create_lessons_input]
+  quizess: [create_quizzes_input]
 }
 
 input create_directus_access_input {
@@ -1578,6 +1600,7 @@ input create_lessons_input {
   video_file: create_directus_files_input
   position: Int
   video_url: String
+  lesson_progresses: [create_lesson_progress_input]
 }
 
 input create_questions_input {
@@ -1620,6 +1643,7 @@ input create_quizzes_input {
   title: String
   passing_score_pct: Int
   position: Int
+  quiz_attempts: [create_quiz_attempts_input]
 }
 
 input create_user_course_progress_input {
@@ -1988,6 +2012,8 @@ input lessons_filter {
   video_file: directus_files_filter
   position: number_filter_operators
   video_url: string_filter_operators
+  lesson_progresses: lesson_progress_filter
+  lesson_progresses_func: count_function_filter_operators
   _and: [lessons_filter]
   _or: [lessons_filter]
 }
@@ -2058,6 +2084,8 @@ input quizzes_filter {
   title: string_filter_operators
   passing_score_pct: number_filter_operators
   position: number_filter_operators
+  quiz_attempts: quiz_attempts_filter
+  quiz_attempts_func: count_function_filter_operators
   _and: [quizzes_filter]
   _or: [quizzes_filter]
 }
@@ -2111,6 +2139,8 @@ input update_courses_input {
   thumbnail: update_directus_files_input
   lessons_count: Int
   duration_hours: Int
+  lessons: [update_lessons_input]
+  quizess: [update_quizzes_input]
 }
 
 input update_directus_access_input {
@@ -2260,6 +2290,7 @@ input update_lessons_input {
   video_file: update_directus_files_input
   position: Int
   video_url: String
+  lesson_progresses: [update_lesson_progress_input]
 }
 
 input update_questions_input {
@@ -2302,6 +2333,7 @@ input update_quizzes_input {
   title: String
   passing_score_pct: Int
   position: Int
+  quiz_attempts: [update_quiz_attempts_input]
 }
 
 input update_user_course_progress_input {
