@@ -149,7 +149,8 @@
       "quiz_id",
       "prompt",
       "score",
-      "position"
+      "position",
+      "answer_options"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "55aa6ab3-9288-41ea-b024-da219db4adf6"
@@ -236,7 +237,8 @@
       "title",
       "passing_score_pct",
       "position",
-      "quiz_attempts"
+      "quiz_attempts",
+      "questions"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "b29602dd-10f6-4158-bac9-bcbd0f3adda5"

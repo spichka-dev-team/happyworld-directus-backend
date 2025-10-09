@@ -1,0 +1,30 @@
+{
+  "collection": "quizzes",
+  "field": "questions",
+  "type": "alias",
+  "meta": {
+    "collection": "quizzes",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "questions",
+    "group": null,
+    "hidden": false,
+    "interface": "list-o2m",
+    "note": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{id}}"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 13,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

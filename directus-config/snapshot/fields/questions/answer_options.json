@@ -1,0 +1,30 @@
+{
+  "collection": "questions",
+  "field": "answer_options",
+  "type": "alias",
+  "meta": {
+    "collection": "questions",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "answer_options",
+    "group": null,
+    "hidden": false,
+    "interface": "list-o2m",
+    "note": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{id}}"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 12,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

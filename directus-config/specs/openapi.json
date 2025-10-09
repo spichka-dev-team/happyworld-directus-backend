@@ -11707,30 +11707,6 @@
               }
             ]
           },
-          "lesson_progress_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsLessonProgress"
-              }
-            ]
-          },
-          "quiz_attempt_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsQuizAttempts"
-              }
-            ]
-          },
           "policies": {
             "nullable": true
           }
@@ -13193,6 +13169,21 @@
           "position": {
             "nullable": true,
             "type": "integer"
+          },
+          "answer_options": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsAnswerOptions"
+                }
+              ]
+            }
           }
         },
         "x-collection": "questions",
@@ -13285,6 +13276,21 @@
                 },
                 {
                   "$ref": "#/components/schemas/ItemsQuizAttempts"
+                }
+              ]
+            }
+          },
+          "questions": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsQuestions"
                 }
               ]
             }

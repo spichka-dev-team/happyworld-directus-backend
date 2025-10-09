@@ -1521,8 +1521,6 @@ type directus_users {
   theme_dark_overrides_func: count_functions
   course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   user_course_progress_id(filter: user_course_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): user_course_progress
-  lesson_progress_id(filter: lesson_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): lesson_progress
-  quiz_attempt_id(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quiz_attempts
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
   policies_func: count_functions
 }
@@ -1563,8 +1561,6 @@ type directus_users_aggregated_count {
   theme_dark_overrides: Int
   course_id: Int
   user_course_progress_id: Int
-  lesson_progress_id: Int
-  quiz_attempt_id: Int
   policies: Int
 }
 
@@ -1738,6 +1734,8 @@ type questions {
   prompt: String
   score: Int
   position: Int
+  answer_options(filter: answer_options_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [answer_options]
+  answer_options_func: count_functions
 }
 
 type questions_mutated {
@@ -1783,6 +1781,8 @@ type quizzes {
   position: Int
   quiz_attempts(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quiz_attempts]
   quiz_attempts_func: count_functions
+  questions(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [questions]
+  questions_func: count_functions
 }
 
 type quizzes_mutated {
@@ -1865,6 +1865,24 @@ type users_me_tfa_generate_data {
   otpauth_url: String
 }
 
+input answer_options_filter {
+  id: string_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  user_created: directus_users_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: directus_users_filter
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  question_id: questions_filter
+  text: string_filter_operators
+  is_correct: boolean_filter_operators
+  position: number_filter_operators
+  _and: [answer_options_filter]
+  _or: [answer_options_filter]
+}
+
 input big_int_filter_operators {
   _eq: GraphQLBigInt
   _neq: GraphQLBigInt
@@ -1912,6 +1930,20 @@ input courses_filter {
   quizess_func: count_function_filter_operators
   _and: [courses_filter]
   _or: [courses_filter]
+}
+
+input create_answer_options_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: create_directus_users_input
+  date_created: Date
+  user_updated: create_directus_users_input
+  date_updated: Date
+  question_id: create_questions_input
+  text: String
+  is_correct: Boolean
+  position: Int
 }
 
 input create_courses_input {
@@ -2201,8 +2233,6 @@ input create_directus_users_input {
   theme_dark_overrides: JSON
   course_id: create_courses_input
   user_course_progress_id: create_user_course_progress_input
-  lesson_progress_id: create_lesson_progress_input
-  quiz_attempt_id: create_quiz_attempts_input
   policies: [create_directus_access_input]
 }
 
@@ -2264,6 +2294,21 @@ input create_lessons_input {
   lesson_progresses: [create_lesson_progress_input]
 }
 
+input create_questions_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: create_directus_users_input
+  date_created: Date
+  user_updated: create_directus_users_input
+  date_updated: Date
+  quiz_id: create_quizzes_input
+  prompt: String
+  score: Int
+  position: Int
+  answer_options: [create_answer_options_input]
+}
+
 input create_quiz_attempts_input {
   id: ID
   status: String
@@ -2290,6 +2335,7 @@ input create_quizzes_input {
   passing_score_pct: Int
   position: Int
   quiz_attempts: [create_quiz_attempts_input]
+  questions: [create_questions_input]
 }
 
 input create_user_course_progress_input {
@@ -2753,8 +2799,6 @@ input directus_users_filter {
   theme_dark_overrides_func: count_function_filter_operators
   course_id: courses_filter
   user_course_progress_id: user_course_progress_filter
-  lesson_progress_id: lesson_progress_filter
-  quiz_attempt_id: quiz_attempts_filter
   policies: directus_access_filter
   policies_func: count_function_filter_operators
   _and: [directus_users_filter]
@@ -2873,6 +2917,8 @@ input questions_filter {
   prompt: string_filter_operators
   score: number_filter_operators
   position: number_filter_operators
+  answer_options: answer_options_filter
+  answer_options_func: count_function_filter_operators
   _and: [questions_filter]
   _or: [questions_filter]
 }
@@ -2910,6 +2956,8 @@ input quizzes_filter {
   position: number_filter_operators
   quiz_attempts: quiz_attempts_filter
   quiz_attempts_func: count_function_filter_operators
+  questions: questions_filter
+  questions_func: count_function_filter_operators
   _and: [quizzes_filter]
   _or: [quizzes_filter]
 }
@@ -2934,6 +2982,20 @@ input string_filter_operators {
   _nnull: Boolean
   _empty: Boolean
   _nempty: Boolean
+}
+
+input update_answer_options_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: update_directus_users_input
+  date_created: Date
+  user_updated: update_directus_users_input
+  date_updated: Date
+  question_id: update_questions_input
+  text: String
+  is_correct: Boolean
+  position: Int
 }
 
 input update_courses_input {
@@ -3264,8 +3326,6 @@ input update_directus_users_input {
   theme_dark_overrides: JSON
   course_id: update_courses_input
   user_course_progress_id: update_user_course_progress_input
-  lesson_progress_id: update_lesson_progress_input
-  quiz_attempt_id: update_quiz_attempts_input
   policies: [update_directus_access_input]
 }
 
@@ -3327,6 +3387,21 @@ input update_lessons_input {
   lesson_progresses: [update_lesson_progress_input]
 }
 
+input update_questions_input {
+  id: ID
+  status: String
+  sort: Int
+  user_created: update_directus_users_input
+  date_created: Date
+  user_updated: update_directus_users_input
+  date_updated: Date
+  quiz_id: update_quizzes_input
+  prompt: String
+  score: Int
+  position: Int
+  answer_options: [update_answer_options_input]
+}
+
 input update_quiz_attempts_input {
   id: ID
   status: String
@@ -3353,6 +3428,7 @@ input update_quizzes_input {
   passing_score_pct: Int
   position: Int
   quiz_attempts: [update_quiz_attempts_input]
+  questions: [update_questions_input]
 }
 
 input update_user_course_progress_input {
