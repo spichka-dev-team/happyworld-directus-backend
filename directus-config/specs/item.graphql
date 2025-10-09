@@ -1,12 +1,12 @@
 type Query {
-  directus_sync_id_map(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_sync_id_map!]!
-  directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
-  directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
-  directus_sync_id_map_by_version(version: String!, id: ID!): version_directus_sync_id_map
   questions(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [questions!]!
   questions_by_id(id: ID!, version: String): questions
   questions_aggregated(groupBy: [String], filter: questions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [questions_aggregated!]!
   questions_by_version(version: String!, id: ID!): version_questions
+  directus_sync_id_map(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_sync_id_map!]!
+  directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
+  directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
+  directus_sync_id_map_by_version(version: String!, id: ID!): version_directus_sync_id_map
   quizzes(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes!]!
   quizzes_by_id(id: ID!, version: String): quizzes
   quizzes_aggregated(groupBy: [String], filter: quizzes_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [quizzes_aggregated!]!
@@ -46,10 +46,10 @@ type Query {
 }
 
 type Mutation {
-  create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
-  create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
   create_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_questions_input!]): [questions!]!
   create_questions_item(data: create_questions_input!): questions
+  create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
+  create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
   create_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_quizzes_input!]): [quizzes!]!
   create_quizzes_item(data: create_quizzes_input!): quizzes
   create_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_courses_input!]): [courses!]!
@@ -68,12 +68,12 @@ type Mutation {
   create_subscription_plans_item(data: create_subscription_plans_input!): subscription_plans
   create_subscriptions_items(filter: subscriptions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_subscriptions_input!]): [subscriptions!]!
   create_subscriptions_item(data: create_subscriptions_input!): subscriptions
-  update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
-  update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
-  update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
   update_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_questions_input!): [questions!]!
   update_questions_batch(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_questions_input!]): [questions!]!
   update_questions_item(id: ID!, data: update_questions_input!): questions
+  update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
+  update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
+  update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
   update_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_quizzes_input!): [quizzes!]!
   update_quizzes_batch(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_quizzes_input!]): [quizzes!]!
   update_quizzes_item(id: ID!, data: update_quizzes_input!): quizzes
@@ -101,10 +101,10 @@ type Mutation {
   update_subscriptions_items(filter: subscriptions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_subscriptions_input!): [subscriptions!]!
   update_subscriptions_batch(filter: subscriptions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_subscriptions_input!]): [subscriptions!]!
   update_subscriptions_item(id: ID!, data: update_subscriptions_input!): subscriptions
-  delete_directus_sync_id_map_items(ids: [ID]!): delete_many
-  delete_directus_sync_id_map_item(id: ID!): delete_one
   delete_questions_items(ids: [ID]!): delete_many
   delete_questions_item(id: ID!): delete_one
+  delete_directus_sync_id_map_items(ids: [ID]!): delete_many
+  delete_directus_sync_id_map_item(id: ID!): delete_one
   delete_quizzes_items(ids: [ID]!): delete_many
   delete_quizzes_item(id: ID!): delete_one
   delete_courses_items(ids: [ID]!): delete_many
@@ -130,9 +130,9 @@ type Subscription {
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
   directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
+  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
-  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_panels_mutated(event: EventEnum): directus_panels_mutated
   directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
@@ -147,8 +147,8 @@ type Subscription {
   directus_access_mutated(event: EventEnum): directus_access_mutated
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
-  directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   questions_mutated(event: EventEnum): questions_mutated
+  directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   quizzes_mutated(event: EventEnum): quizzes_mutated
   courses_mutated(event: EventEnum): courses_mutated
   lessons_mutated(event: EventEnum): lessons_mutated
@@ -849,6 +849,7 @@ type directus_users {
   theme_dark_overrides: JSON
   theme_dark_overrides_func: count_functions
   active_subscription_id(filter: subscriptions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): subscriptions
+  my_course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   my_course_progress_id(filter: user_course_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [user_course_progress]
   my_course_progress_id_func: count_functions
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
@@ -1724,6 +1725,7 @@ input create_directus_users_input {
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
   active_subscription_id: create_subscriptions_input
+  my_course_id: create_courses_input
   my_course_progress_id: [create_user_course_progress_input]
   policies: [create_directus_access_input]
 }
@@ -2126,6 +2128,7 @@ input directus_users_filter {
   theme_dark_overrides: string_filter_operators
   theme_dark_overrides_func: count_function_filter_operators
   active_subscription_id: subscriptions_filter
+  my_course_id: courses_filter
   my_course_progress_id: user_course_progress_filter
   my_course_progress_id_func: count_function_filter_operators
   policies: directus_access_filter
@@ -2478,6 +2481,7 @@ input update_directus_users_input {
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
   active_subscription_id: update_subscriptions_input
+  my_course_id: update_courses_input
   my_course_progress_id: [update_user_course_progress_input]
   policies: [update_directus_access_input]
 }

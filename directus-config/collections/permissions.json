@@ -1,5 +1,25 @@
 [
   {
+    "collection": "courses",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "total_lessons_and_quizess",
+      "lessons",
+      "duration_hours",
+      "quizess",
+      "thumbnail",
+      "description",
+      "title",
+      "date_created"
+    ],
+    "policy": "_sync_default_public_policy",
+    "_syncId": "96a340ba-ad8c-4683-8c33-a76013740ec7"
+  },
+  {
     "collection": "answer_options",
     "action": "read",
     "permissions": null,
@@ -12,8 +32,8 @@
       "position",
       "is_correct"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "8b2ea1b9-c34c-4bff-ae94-8c08df86e02f"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "27056d2a-17cc-4859-b82c-b2947e44129b"
   },
   {
     "collection": "courses",
@@ -32,8 +52,8 @@
       "quizess",
       "total_lessons_and_quizess"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "ebef8153-8df4-4c68-99fa-4260df0ecc74"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "20ea0eef-aa69-4667-afad-9b4903e91c78"
   },
   {
     "collection": "directus_files",
@@ -44,8 +64,8 @@
     "fields": [
       "*"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "8212b322-a795-42c9-a4c0-bcf2e6e90f98"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "8d15b7e1-0cfd-4415-b887-edf13d85d8e6"
   },
   {
     "collection": "directus_users",
@@ -76,8 +96,8 @@
       "active_subscription_id",
       "my_course_progress_id"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "795fccde-8bac-44c0-94a8-98d247d30d87"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "d24eb309-17ab-48ed-a350-84c7d5198adb"
   },
   {
     "collection": "lesson_progress",
@@ -88,8 +108,8 @@
     "fields": [
       "lesson_id"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "149bb02a-b239-4a01-8635-e6259c85004b"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "882f373b-37e3-480f-9d08-a8c5e03b47b2"
   },
   {
     "collection": "lesson_progress",
@@ -113,8 +133,8 @@
       "user_created",
       "date_created"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "5a1b1e0b-4d91-48ac-9ced-f177111f8669"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "de0ea3be-65c2-4d5e-ac0a-5e53d5f0d28e"
   },
   {
     "collection": "lessons",
@@ -133,8 +153,8 @@
       "video_url",
       "lesson_progresses"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "dee27207-f9b0-4d08-b60e-dcc60ad5ee24"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "f6f77052-02c4-4d4c-b013-82e66f7343fa"
   },
   {
     "collection": "questions",
@@ -150,8 +170,8 @@
       "position",
       "answer_options"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "55aa6ab3-9288-41ea-b024-da219db4adf6"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "82a86bd1-2819-430e-bc9e-531a5fd4d986"
   },
   {
     "collection": "quiz_attempts",
@@ -162,8 +182,8 @@
     "fields": [
       "quiz_id"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "26c78bb8-be13-4e62-ad02-bbeacc3df76e"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "5400c702-edcc-49f8-bf8d-55c96d5db826"
   },
   {
     "collection": "quiz_attempts",
@@ -188,8 +208,8 @@
       "user_created",
       "date_created"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "396207a9-3dfe-4ecd-8cb8-f8eadbf630c0"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "bd95385d-8546-473a-a392-c2913ff850cc"
   },
   {
     "collection": "quiz_attempts",
@@ -208,8 +228,8 @@
     "fields": [
       "score_pct"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "833f5a3f-4c63-4581-9011-af4562675876"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "fc90c158-7f43-4f50-a00d-7aab61ac7f58"
   },
   {
     "collection": "quizzes",
@@ -226,8 +246,8 @@
       "quiz_attempts",
       "questions"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "b29602dd-10f6-4158-bac9-bcbd0f3adda5"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "0737f43e-5f07-46b7-a55a-c02ed13a3cd6"
   },
   {
     "collection": "subscription_plans",
@@ -241,8 +261,8 @@
       "course_id",
       "price_kzt"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "d78beac8-13a7-4a8b-af08-3ed7103b9a31"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "450e7465-0a94-4356-b696-4c343cc60776"
   },
   {
     "collection": "subscriptions",
@@ -256,8 +276,8 @@
       "full_name",
       "email"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "22781f93-6157-405c-9b97-de837ae04cd1"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "f892c4e3-6855-4afa-bb82-5a68d4227d2a"
   },
   {
     "collection": "subscriptions",
@@ -283,8 +303,8 @@
       "phone_number",
       "email"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "897ee73f-4f27-4af2-922c-d59c1e57b587"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "5a13e918-b4c1-45b8-84e4-b3d015d8635f"
   },
   {
     "collection": "user_course_progress",
@@ -308,8 +328,8 @@
       "course_id",
       "user_created"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "095f8415-32d6-42ef-832d-231c48fe1df8"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "08af668a-758f-4930-a5a6-c25f1213c9d8"
   },
   {
     "collection": "user_course_progress",
@@ -330,7 +350,7 @@
       "lessons_completed",
       "percent_complete"
     ],
-    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
-    "_syncId": "557ab7d0-9afa-4d58-bb09-04028298f68f"
+    "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
+    "_syncId": "39710d58-0e64-4290-9c45-c1827b01ef13"
   }
 ]
