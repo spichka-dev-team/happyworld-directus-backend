@@ -14751,6 +14751,18 @@
                 "$ref": "#/components/schemas/ItemsSubscriptionPlans"
               }
             ]
+          },
+          "full_name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "phone_number": {
+            "nullable": true,
+            "type": "string"
+          },
+          "email": {
+            "nullable": true,
+            "type": "string"
           }
         },
         "x-collection": "subscriptions",

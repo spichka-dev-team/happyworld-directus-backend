@@ -1,38 +1,33 @@
 {
   "collection": "subscriptions",
-  "field": "subscription_plan_id",
-  "type": "uuid",
+  "field": "full_name",
+  "type": "string",
   "meta": {
     "collection": "subscriptions",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "subscription_plan_id",
+    "field": "full_name",
     "group": null,
     "hidden": false,
-    "interface": "select-dropdown-m2o",
+    "interface": "input",
     "note": null,
-    "options": {
-      "enableLink": true,
-      "template": "{{id}}"
-    },
+    "options": null,
     "readonly": false,
     "required": true,
-    "sort": 8,
-    "special": [
-      "m2o"
-    ],
+    "sort": 9,
+    "special": null,
     "translations": null,
     "validation": null,
     "validation_message": null,
     "width": "full"
   },
   "schema": {
-    "name": "subscription_plan_id",
+    "name": "full_name",
     "table": "subscriptions",
-    "data_type": "uuid",
+    "data_type": "character varying",
     "default_value": null,
-    "max_length": null,
+    "max_length": 255,
     "numeric_precision": null,
     "numeric_scale": null,
     "is_nullable": true,
@@ -42,7 +37,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "subscription_plans",
-    "foreign_key_column": "id"
+    "foreign_key_table": null,
+    "foreign_key_column": null
   }
 }

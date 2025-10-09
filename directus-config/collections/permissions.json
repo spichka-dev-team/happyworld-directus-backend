@@ -251,7 +251,10 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "subscription_plan_id"
+      "subscription_plan_id",
+      "phone_number",
+      "full_name",
+      "email"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "22781f93-6157-405c-9b97-de837ae04cd1"
@@ -274,7 +277,11 @@
       "id",
       "subscription_plan_id",
       "user_created",
-      "date_created"
+      "date_created",
+      "status",
+      "full_name",
+      "phone_number",
+      "email"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "897ee73f-4f27-4af2-922c-d59c1e57b587"

@@ -1873,6 +1873,9 @@ type subscriptions {
   date_updated: Date
   date_updated_func: datetime_functions
   subscription_plan_id(filter: subscription_plans_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): subscription_plans
+  full_name: String
+  phone_number: String
+  email: String
 }
 
 type subscriptions_mutated {
@@ -2401,6 +2404,9 @@ input create_subscriptions_input {
   user_updated: create_directus_users_input
   date_updated: Date
   subscription_plan_id: create_subscription_plans_input
+  full_name: String
+  phone_number: String
+  email: String
 }
 
 input create_user_course_progress_input {
@@ -3077,6 +3083,9 @@ input subscriptions_filter {
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
   subscription_plan_id: subscription_plans_filter
+  full_name: string_filter_operators
+  phone_number: string_filter_operators
+  email: string_filter_operators
   _and: [subscriptions_filter]
   _or: [subscriptions_filter]
 }
@@ -3549,6 +3558,9 @@ input update_subscriptions_input {
   user_updated: update_directus_users_input
   date_updated: Date
   subscription_plan_id: update_subscription_plans_input
+  full_name: String
+  phone_number: String
+  email: String
 }
 
 input update_user_course_progress_input {
