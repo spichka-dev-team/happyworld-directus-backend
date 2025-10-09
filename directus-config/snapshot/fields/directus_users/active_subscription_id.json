@@ -1,0 +1,48 @@
+{
+  "collection": "directus_users",
+  "field": "active_subscription_id",
+  "type": "uuid",
+  "meta": {
+    "collection": "directus_users",
+    "conditions": null,
+    "display": "related-values",
+    "display_options": null,
+    "field": "active_subscription_id",
+    "group": null,
+    "hidden": false,
+    "interface": "select-dropdown-m2o",
+    "note": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{id}}"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 1,
+    "special": [
+      "m2o"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  },
+  "schema": {
+    "name": "active_subscription_id",
+    "table": "directus_users",
+    "data_type": "uuid",
+    "default_value": null,
+    "max_length": null,
+    "numeric_precision": null,
+    "numeric_scale": null,
+    "is_nullable": true,
+    "is_unique": false,
+    "is_indexed": false,
+    "is_primary_key": false,
+    "is_generated": false,
+    "generation_expression": null,
+    "has_auto_increment": false,
+    "foreign_key_table": "subscriptions",
+    "foreign_key_column": "id"
+  }
+}

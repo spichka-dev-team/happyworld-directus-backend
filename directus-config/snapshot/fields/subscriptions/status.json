@@ -1,0 +1,63 @@
+{
+  "collection": "subscriptions",
+  "field": "status",
+  "type": "string",
+  "meta": {
+    "collection": "subscriptions",
+    "conditions": null,
+    "display": "labels",
+    "display_options": {
+      "choices": null
+    },
+    "field": "status",
+    "group": null,
+    "hidden": false,
+    "interface": "select-dropdown",
+    "note": null,
+    "options": {
+      "choices": [
+        {
+          "color": "var(--theme--primary)",
+          "text": "PENDING",
+          "value": "PENDING"
+        },
+        {
+          "color": "#18C923",
+          "text": "APPROVED",
+          "value": "APPROVED"
+        },
+        {
+          "color": "#ED0707",
+          "text": "REJECTED",
+          "value": "REJECTED"
+        }
+      ]
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 5,
+    "special": null,
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  },
+  "schema": {
+    "name": "status",
+    "table": "subscriptions",
+    "data_type": "character varying",
+    "default_value": "PENDING",
+    "max_length": 255,
+    "numeric_precision": null,
+    "numeric_scale": null,
+    "is_nullable": false,
+    "is_unique": false,
+    "is_indexed": false,
+    "is_primary_key": false,
+    "is_generated": false,
+    "generation_expression": null,
+    "has_auto_increment": false,
+    "foreign_key_table": null,
+    "foreign_key_column": null
+  }
+}

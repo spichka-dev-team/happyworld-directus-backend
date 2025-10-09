@@ -1,13 +1,13 @@
 {
   "collection": "directus_users",
-  "field": "course_id",
-  "related_collection": "courses",
+  "field": "active_subscription_id",
+  "related_collection": "subscriptions",
   "meta": {
     "junction_field": null,
     "many_collection": "directus_users",
-    "many_field": "course_id",
+    "many_field": "active_subscription_id",
     "one_allowed_collections": null,
-    "one_collection": "courses",
+    "one_collection": "subscriptions",
     "one_collection_field": null,
     "one_deselect_action": "nullify",
     "one_field": null,
@@ -15,10 +15,10 @@
   },
   "schema": {
     "table": "directus_users",
-    "column": "course_id",
-    "foreign_key_table": "courses",
+    "column": "active_subscription_id",
+    "foreign_key_table": "subscriptions",
     "foreign_key_column": "id",
-    "constraint_name": "directus_users_course_id_foreign",
+    "constraint_name": "directus_users_active_subscription_id_foreign",
     "on_update": "NO ACTION",
     "on_delete": "SET NULL"
   }
