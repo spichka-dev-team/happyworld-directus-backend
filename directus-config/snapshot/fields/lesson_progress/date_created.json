@@ -11,7 +11,7 @@
     },
     "field": "date_created",
     "group": null,
-    "hidden": true,
+    "hidden": false,
     "interface": "datetime",
     "note": null,
     "options": null,
@@ -24,7 +24,7 @@
     "translations": null,
     "validation": null,
     "validation_message": null,
-    "width": "half"
+    "width": "full"
   },
   "schema": {
     "name": "date_created",

@@ -12,7 +12,20 @@
     "hidden": false,
     "interface": "list",
     "note": null,
-    "options": null,
+    "options": {
+      "fields": [
+        {
+          "field": "text",
+          "meta": {
+            "field": "text",
+            "interface": "input",
+            "type": "string"
+          },
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
     "readonly": false,
     "required": false,
     "sort": 11,

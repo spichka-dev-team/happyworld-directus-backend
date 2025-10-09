@@ -108,9 +108,9 @@ type Subscription {
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
   directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
-  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_panels_mutated(event: EventEnum): directus_panels_mutated
   directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
@@ -824,6 +824,7 @@ type directus_users {
   theme_light_overrides_func: count_functions
   theme_dark_overrides: JSON
   theme_dark_overrides_func: count_functions
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
   policies_func: count_functions
 }
@@ -890,8 +891,6 @@ type lesson_progress {
   date_updated_func: datetime_functions
   lesson_id(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): lessons
   completed: Boolean
-  completed_at: Date
-  completed_at_func: datetime_functions
 }
 
 type lesson_progress_aggregated {
@@ -917,7 +916,6 @@ type lesson_progress_aggregated_count {
   date_updated: Int
   lesson_id: Int
   completed: Int
-  completed_at: Int
 }
 
 type lesson_progress_aggregated_fields {
@@ -1061,8 +1059,6 @@ type quiz_attempts {
   date_updated: Date
   date_updated_func: datetime_functions
   quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
-  submitted_at: Date
-  submitted_at_func: datetime_functions
   score_pct: Int
   passed: Boolean
 }
@@ -1089,7 +1085,6 @@ type quiz_attempts_aggregated_count {
   user_updated: Int
   date_updated: Int
   quiz_id: Int
-  submitted_at: Int
   score_pct: Int
   passed: Int
 }
@@ -1272,7 +1267,6 @@ type version_lesson_progress {
   date_updated: Date
   lesson_id: JSON
   completed: Boolean
-  completed_at: Date
 }
 
 """"""
@@ -1319,7 +1313,6 @@ type version_quiz_attempts {
   user_updated: JSON
   date_updated: Date
   quiz_id: JSON
-  submitted_at: Date
   score_pct: Int
   passed: Boolean
 }
@@ -1569,6 +1562,7 @@ input create_directus_users_input {
   theme_light: String
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
+  course_id: create_courses_input
   policies: [create_directus_access_input]
 }
 
@@ -1582,7 +1576,6 @@ input create_lesson_progress_input {
   date_updated: Date
   lesson_id: create_lessons_input
   completed: Boolean
-  completed_at: Date
 }
 
 input create_lessons_input {
@@ -1626,7 +1619,6 @@ input create_quiz_attempts_input {
   user_updated: create_directus_users_input
   date_updated: Date
   quiz_id: create_quizzes_input
-  submitted_at: Date
   score_pct: Int
   passed: Boolean
 }
@@ -1944,6 +1936,7 @@ input directus_users_filter {
   theme_light_overrides_func: count_function_filter_operators
   theme_dark_overrides: string_filter_operators
   theme_dark_overrides_func: count_function_filter_operators
+  course_id: courses_filter
   policies: directus_access_filter
   policies_func: count_function_filter_operators
   _and: [directus_users_filter]
@@ -1988,8 +1981,6 @@ input lesson_progress_filter {
   date_updated_func: datetime_function_filter_operators
   lesson_id: lessons_filter
   completed: boolean_filter_operators
-  completed_at: date_filter_operators
-  completed_at_func: datetime_function_filter_operators
   _and: [lesson_progress_filter]
   _or: [lesson_progress_filter]
 }
@@ -2062,8 +2053,6 @@ input quiz_attempts_filter {
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
   quiz_id: quizzes_filter
-  submitted_at: date_filter_operators
-  submitted_at_func: datetime_function_filter_operators
   score_pct: number_filter_operators
   passed: boolean_filter_operators
   _and: [quiz_attempts_filter]
@@ -2259,6 +2248,7 @@ input update_directus_users_input {
   theme_light: String
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
+  course_id: update_courses_input
   policies: [update_directus_access_input]
 }
 
@@ -2272,7 +2262,6 @@ input update_lesson_progress_input {
   date_updated: Date
   lesson_id: update_lessons_input
   completed: Boolean
-  completed_at: Date
 }
 
 input update_lessons_input {
@@ -2316,7 +2305,6 @@ input update_quiz_attempts_input {
   user_updated: update_directus_users_input
   date_updated: Date
   quiz_id: update_quizzes_input
-  submitted_at: Date
   score_pct: Int
   passed: Boolean
 }

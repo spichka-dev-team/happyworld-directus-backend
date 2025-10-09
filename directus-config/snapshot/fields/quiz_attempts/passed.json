@@ -15,7 +15,7 @@
     "options": null,
     "readonly": false,
     "required": false,
-    "sort": 11,
+    "sort": 9,
     "special": [
       "cast-boolean"
     ],
@@ -28,7 +28,7 @@
     "name": "passed",
     "table": "quiz_attempts",
     "data_type": "boolean",
-    "default_value": null,
+    "default_value": true,
     "max_length": null,
     "numeric_precision": null,
     "numeric_scale": null,

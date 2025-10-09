@@ -28,7 +28,7 @@
     "name": "completed",
     "table": "lesson_progress",
     "data_type": "boolean",
-    "default_value": null,
+    "default_value": true,
     "max_length": null,
     "numeric_precision": null,
     "numeric_scale": null,

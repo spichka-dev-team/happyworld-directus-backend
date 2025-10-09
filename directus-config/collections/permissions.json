@@ -59,15 +59,37 @@
       "avatar",
       "id",
       "role",
-      "status"
+      "status",
+      "course_id"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "795fccde-8bac-44c0-94a8-98d247d30d87"
   },
   {
     "collection": "lesson_progress",
-    "action": "read",
+    "action": "create",
     "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "completed",
+      "lesson_id"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "149bb02a-b239-4a01-8635-e6259c85004b"
+  },
+  {
+    "collection": "lesson_progress",
+    "action": "read",
+    "permissions": {
+      "_and": [
+        {
+          "user_created": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
     "validation": null,
     "presets": null,
     "fields": [
@@ -75,7 +97,8 @@
       "completed_at",
       "lesson_id",
       "completed",
-      "user_created"
+      "user_created",
+      "date_created"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "5a1b1e0b-4d91-48ac-9ced-f177111f8669"
@@ -130,8 +153,29 @@
   },
   {
     "collection": "quiz_attempts",
-    "action": "read",
+    "action": "create",
     "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "passed",
+      "quiz_id"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "26c78bb8-be13-4e62-ad02-bbeacc3df76e"
+  },
+  {
+    "collection": "quiz_attempts",
+    "action": "read",
+    "permissions": {
+      "_and": [
+        {
+          "user_created": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
     "validation": null,
     "presets": null,
     "fields": [
@@ -140,7 +184,8 @@
       "submitted_at",
       "quiz_id",
       "score_pct",
-      "user_created"
+      "user_created",
+      "date_created"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "396207a9-3dfe-4ecd-8cb8-f8eadbf630c0"
@@ -156,6 +201,26 @@
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "917557fd-279b-4788-be5a-2b540b26eaba"
+  },
+  {
+    "collection": "quiz_attempts",
+    "action": "update",
+    "permissions": {
+      "_and": [
+        {
+          "user_created": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "score_pct"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "833f5a3f-4c63-4581-9011-af4562675876"
   },
   {
     "collection": "quizzes",
@@ -223,6 +288,18 @@
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "095f8415-32d6-42ef-832d-231c48fe1df8"
+  },
+  {
+    "collection": "user_course_progress",
+    "action": "share",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "ac06eae8-dfb3-4d96-ad04-a9865a137c74"
   },
   {
     "collection": "user_course_progress",

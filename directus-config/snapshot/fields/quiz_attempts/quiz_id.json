@@ -17,7 +17,7 @@
       "template": "{{title}}"
     },
     "readonly": false,
-    "required": false,
+    "required": true,
     "sort": 8,
     "special": [
       "m2o"
