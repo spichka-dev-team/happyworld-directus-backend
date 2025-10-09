@@ -7,14 +7,14 @@ type Query {
   questions_by_id(id: ID!, version: String): questions
   questions_aggregated(groupBy: [String], filter: questions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [questions_aggregated!]!
   questions_by_version(version: String!, id: ID!): version_questions
-  courses(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [courses!]!
-  courses_by_id(id: ID!, version: String): courses
-  courses_aggregated(groupBy: [String], filter: courses_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [courses_aggregated!]!
-  courses_by_version(version: String!, id: ID!): version_courses
   quizzes(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes!]!
   quizzes_by_id(id: ID!, version: String): quizzes
   quizzes_aggregated(groupBy: [String], filter: quizzes_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [quizzes_aggregated!]!
   quizzes_by_version(version: String!, id: ID!): version_quizzes
+  courses(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [courses!]!
+  courses_by_id(id: ID!, version: String): courses
+  courses_aggregated(groupBy: [String], filter: courses_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [courses_aggregated!]!
+  courses_by_version(version: String!, id: ID!): version_courses
   lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons!]!
   lessons_by_id(id: ID!, version: String): lessons
   lessons_aggregated(groupBy: [String], filter: lessons_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [lessons_aggregated!]!
@@ -42,10 +42,10 @@ type Mutation {
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
   create_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_questions_input!]): [questions!]!
   create_questions_item(data: create_questions_input!): questions
-  create_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_courses_input!]): [courses!]!
-  create_courses_item(data: create_courses_input!): courses
   create_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_quizzes_input!]): [quizzes!]!
   create_quizzes_item(data: create_quizzes_input!): quizzes
+  create_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_courses_input!]): [courses!]!
+  create_courses_item(data: create_courses_input!): courses
   create_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_lessons_input!]): [lessons!]!
   create_lessons_item(data: create_lessons_input!): lessons
   create_answer_options_items(filter: answer_options_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_answer_options_input!]): [answer_options!]!
@@ -62,12 +62,12 @@ type Mutation {
   update_questions_items(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_questions_input!): [questions!]!
   update_questions_batch(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_questions_input!]): [questions!]!
   update_questions_item(id: ID!, data: update_questions_input!): questions
-  update_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_courses_input!): [courses!]!
-  update_courses_batch(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_courses_input!]): [courses!]!
-  update_courses_item(id: ID!, data: update_courses_input!): courses
   update_quizzes_items(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_quizzes_input!): [quizzes!]!
   update_quizzes_batch(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_quizzes_input!]): [quizzes!]!
   update_quizzes_item(id: ID!, data: update_quizzes_input!): quizzes
+  update_courses_items(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_courses_input!): [courses!]!
+  update_courses_batch(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_courses_input!]): [courses!]!
+  update_courses_item(id: ID!, data: update_courses_input!): courses
   update_lessons_items(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_lessons_input!): [lessons!]!
   update_lessons_batch(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_lessons_input!]): [lessons!]!
   update_lessons_item(id: ID!, data: update_lessons_input!): lessons
@@ -87,10 +87,10 @@ type Mutation {
   delete_directus_sync_id_map_item(id: ID!): delete_one
   delete_questions_items(ids: [ID]!): delete_many
   delete_questions_item(id: ID!): delete_one
-  delete_courses_items(ids: [ID]!): delete_many
-  delete_courses_item(id: ID!): delete_one
   delete_quizzes_items(ids: [ID]!): delete_many
   delete_quizzes_item(id: ID!): delete_one
+  delete_courses_items(ids: [ID]!): delete_many
+  delete_courses_item(id: ID!): delete_one
   delete_lessons_items(ids: [ID]!): delete_many
   delete_lessons_item(id: ID!): delete_one
   delete_answer_options_items(ids: [ID]!): delete_many
@@ -108,9 +108,9 @@ type Subscription {
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
   directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
+  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
-  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_panels_mutated(event: EventEnum): directus_panels_mutated
   directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
@@ -127,8 +127,8 @@ type Subscription {
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   questions_mutated(event: EventEnum): questions_mutated
-  courses_mutated(event: EventEnum): courses_mutated
   quizzes_mutated(event: EventEnum): quizzes_mutated
+  courses_mutated(event: EventEnum): courses_mutated
   lessons_mutated(event: EventEnum): lessons_mutated
   answer_options_mutated(event: EventEnum): answer_options_mutated
   lesson_progress_mutated(event: EventEnum): lesson_progress_mutated
@@ -253,8 +253,8 @@ type courses {
   title: String
   description: String
   thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
-  lessons_count: Int
   duration_hours: Int
+  total_lessons_and_quizess: Int
   lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons]
   lessons_func: count_functions
   quizess(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes]
@@ -285,16 +285,16 @@ type courses_aggregated_count {
   title: Int
   description: Int
   thumbnail: Int
-  lessons_count: Int
   duration_hours: Int
+  total_lessons_and_quizess: Int
   lessons: Int
   quizess: Int
 }
 
 type courses_aggregated_fields {
   sort: Float
-  lessons_count: Float
   duration_hours: Float
+  total_lessons_and_quizess: Float
 }
 
 type courses_mutated {
@@ -825,6 +825,9 @@ type directus_users {
   theme_dark_overrides: JSON
   theme_dark_overrides_func: count_functions
   course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  user_course_progress_id(filter: user_course_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): user_course_progress
+  lesson_progress_id(filter: lesson_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): lesson_progress
+  quiz_attempt_id(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quiz_attempts
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
   policies_func: count_functions
 }
@@ -1171,7 +1174,6 @@ type user_course_progress {
   course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   lessons_completed: Int
   tests_passed: Int
-  percent_complete: Int
 }
 
 type user_course_progress_aggregated {
@@ -1198,14 +1200,12 @@ type user_course_progress_aggregated_count {
   course_id: Int
   lessons_completed: Int
   tests_passed: Int
-  percent_complete: Int
 }
 
 type user_course_progress_aggregated_fields {
   sort: Float
   lessons_completed: Float
   tests_passed: Float
-  percent_complete: Float
 }
 
 type user_course_progress_mutated {
@@ -1241,8 +1241,8 @@ type version_courses {
   title: String
   description: String
   thumbnail: JSON
-  lessons_count: Int
   duration_hours: Int
+  total_lessons_and_quizess: Int
   lessons: JSON
   quizess: JSON
 }
@@ -1345,7 +1345,6 @@ type version_user_course_progress {
   course_id: JSON
   lessons_completed: Int
   tests_passed: Int
-  percent_complete: Int
 }
 
 input answer_options_filter {
@@ -1405,8 +1404,8 @@ input courses_filter {
   title: string_filter_operators
   description: string_filter_operators
   thumbnail: directus_files_filter
-  lessons_count: number_filter_operators
   duration_hours: number_filter_operators
+  total_lessons_and_quizess: number_filter_operators
   lessons: lessons_filter
   lessons_func: count_function_filter_operators
   quizess: quizzes_filter
@@ -1440,8 +1439,8 @@ input create_courses_input {
   title: String
   description: String
   thumbnail: create_directus_files_input
-  lessons_count: Int
   duration_hours: Int
+  total_lessons_and_quizess: Int
   lessons: [create_lessons_input]
   quizess: [create_quizzes_input]
 }
@@ -1563,6 +1562,9 @@ input create_directus_users_input {
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
   course_id: create_courses_input
+  user_course_progress_id: create_user_course_progress_input
+  lesson_progress_id: create_lesson_progress_input
+  quiz_attempt_id: create_quiz_attempts_input
   policies: [create_directus_access_input]
 }
 
@@ -1649,7 +1651,6 @@ input create_user_course_progress_input {
   course_id: create_courses_input
   lessons_completed: Int
   tests_passed: Int
-  percent_complete: Int
 }
 
 input date_filter_operators {
@@ -1937,6 +1938,9 @@ input directus_users_filter {
   theme_dark_overrides: string_filter_operators
   theme_dark_overrides_func: count_function_filter_operators
   course_id: courses_filter
+  user_course_progress_id: user_course_progress_filter
+  lesson_progress_id: lesson_progress_filter
+  quiz_attempt_id: quiz_attempts_filter
   policies: directus_access_filter
   policies_func: count_function_filter_operators
   _and: [directus_users_filter]
@@ -2126,8 +2130,8 @@ input update_courses_input {
   title: String
   description: String
   thumbnail: update_directus_files_input
-  lessons_count: Int
   duration_hours: Int
+  total_lessons_and_quizess: Int
   lessons: [update_lessons_input]
   quizess: [update_quizzes_input]
 }
@@ -2249,6 +2253,9 @@ input update_directus_users_input {
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
   course_id: update_courses_input
+  user_course_progress_id: update_user_course_progress_input
+  lesson_progress_id: update_lesson_progress_input
+  quiz_attempt_id: update_quiz_attempts_input
   policies: [update_directus_access_input]
 }
 
@@ -2335,7 +2342,6 @@ input update_user_course_progress_input {
   course_id: update_courses_input
   lessons_completed: Int
   tests_passed: Int
-  percent_complete: Int
 }
 
 input user_course_progress_filter {
@@ -2351,7 +2357,6 @@ input user_course_progress_filter {
   course_id: courses_filter
   lessons_completed: number_filter_operators
   tests_passed: number_filter_operators
-  percent_complete: number_filter_operators
   _and: [user_course_progress_filter]
   _or: [user_course_progress_filter]
 }

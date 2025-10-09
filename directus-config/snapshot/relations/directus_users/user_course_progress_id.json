@@ -1,0 +1,25 @@
+{
+  "collection": "directus_users",
+  "field": "user_course_progress_id",
+  "related_collection": "user_course_progress",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "directus_users",
+    "many_field": "user_course_progress_id",
+    "one_allowed_collections": null,
+    "one_collection": "user_course_progress",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "directus_users",
+    "column": "user_course_progress_id",
+    "foreign_key_table": "user_course_progress",
+    "foreign_key_column": "id",
+    "constraint_name": "directus_users_user_course_progress_id_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

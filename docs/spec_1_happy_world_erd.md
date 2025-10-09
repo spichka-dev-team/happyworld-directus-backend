@@ -176,6 +176,8 @@ courses ||--o{ order_processors
 @enduml
 ```
 
+?fields=id,title,lessons.id,lessons.title,lessons.position,quizess.id,quizess.title,quizess.position,lessons.lesson_progresses.completed,quizess.quiz_attempts.passed
+
 ---
 
 ## Implementation

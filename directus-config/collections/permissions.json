@@ -29,7 +29,8 @@
       "lessons_count",
       "duration_hours",
       "lessons",
-      "quizess"
+      "quizess",
+      "total_lessons_and_quizess"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "ebef8153-8df4-4c68-99fa-4260df0ecc74"
@@ -60,7 +61,10 @@
       "id",
       "role",
       "status",
-      "course_id"
+      "course_id",
+      "user_course_progress_id",
+      "lesson_progress_id",
+      "quiz_attempt_id"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "795fccde-8bac-44c0-94a8-98d247d30d87"
@@ -72,7 +76,6 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "completed",
       "lesson_id"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
@@ -158,7 +161,6 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "passed",
       "quiz_id"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",

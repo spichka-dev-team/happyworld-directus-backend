@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "name": "initialize the user_course_progress",
+    "icon": "bolt",
+    "color": null,
+    "description": null,
+    "status": "active",
+    "trigger": "event",
+    "accountability": "all",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create"
+      ],
+      "collections": [
+        "directus_users"
+      ]
+    },
+    "operation": null,
+    "_syncId": "937da240-ff02-4e08-9ac2-960a156334c0"
+  }
+]
