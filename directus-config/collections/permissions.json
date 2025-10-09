@@ -94,8 +94,7 @@
       "active_subscription",
       "course_id",
       "active_subscription_id",
-      "my_course_progress_id",
-      "my_course_id"
+      "my_course_progress_id"
     ],
     "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
     "_syncId": "d24eb309-17ab-48ed-a350-84c7d5198adb"
@@ -181,7 +180,9 @@
     "validation": null,
     "presets": null,
     "fields": [
-      "quiz_id"
+      "quiz_id",
+      "score_pct",
+      "selected_answers"
     ],
     "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
     "_syncId": "5400c702-edcc-49f8-bf8d-55c96d5db826"
@@ -207,7 +208,8 @@
       "quiz_id",
       "score_pct",
       "user_created",
-      "date_created"
+      "date_created",
+      "selected_answers"
     ],
     "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
     "_syncId": "bd95385d-8546-473a-a392-c2913ff850cc"

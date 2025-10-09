@@ -1,0 +1,59 @@
+{
+  "collection": "quiz_attempts",
+  "field": "selected_answers",
+  "type": "json",
+  "meta": {
+    "collection": "quiz_attempts",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "selected_answers",
+    "group": null,
+    "hidden": false,
+    "interface": "list",
+    "note": null,
+    "options": {
+      "fields": [
+        {
+          "field": "id",
+          "meta": {
+            "field": "id",
+            "interface": "input",
+            "required": false,
+            "type": "uuid"
+          },
+          "name": "id",
+          "type": "uuid"
+        }
+      ]
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 11,
+    "special": [
+      "cast-json"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  },
+  "schema": {
+    "name": "selected_answers",
+    "table": "quiz_attempts",
+    "data_type": "json",
+    "default_value": null,
+    "max_length": null,
+    "numeric_precision": null,
+    "numeric_scale": null,
+    "is_nullable": true,
+    "is_unique": false,
+    "is_indexed": false,
+    "is_primary_key": false,
+    "is_generated": false,
+    "generation_expression": null,
+    "has_auto_increment": false,
+    "foreign_key_table": null,
+    "foreign_key_column": null
+  }
+}

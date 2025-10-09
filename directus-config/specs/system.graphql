@@ -29,15 +29,15 @@ type Query {
   folders(filter: directus_folders_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_folders!]!
   folders_by_id(id: ID!, version: String): directus_folders
   folders_aggregated(groupBy: [String], filter: directus_folders_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_folders_aggregated!]!
-  users(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_users!]!
-  users_by_id(id: ID!, version: String): directus_users
-  users_aggregated(groupBy: [String], filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_users_aggregated!]!
   roles(filter: directus_roles_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_roles!]!
   roles_by_id(id: ID!, version: String): directus_roles
   roles_aggregated(groupBy: [String], filter: directus_roles_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_roles_aggregated!]!
   presets(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_presets!]!
   presets_by_id(id: ID!, version: String): directus_presets
   presets_aggregated(groupBy: [String], filter: directus_presets_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_presets_aggregated!]!
+  users(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_users!]!
+  users_by_id(id: ID!, version: String): directus_users
+  users_aggregated(groupBy: [String], filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_users_aggregated!]!
   revisions(filter: directus_revisions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_revisions!]!
   revisions_by_id(id: ID!, version: String): directus_revisions
   revisions_aggregated(groupBy: [String], filter: directus_revisions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_revisions_aggregated!]!
@@ -62,19 +62,19 @@ type Query {
   translations(filter: directus_translations_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_translations!]!
   translations_by_id(id: ID!, version: String): directus_translations
   translations_aggregated(groupBy: [String], filter: directus_translations_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_translations_aggregated!]!
+  settings(version: String): directus_settings
+  versions(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_versions!]!
+  versions_by_id(id: ID!, version: String): directus_versions
+  versions_aggregated(groupBy: [String], filter: directus_versions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_versions_aggregated!]!
   webhooks(filter: directus_webhooks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_webhooks!]!
   webhooks_by_id(id: ID!, version: String): directus_webhooks
   webhooks_aggregated(groupBy: [String], filter: directus_webhooks_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_webhooks_aggregated!]!
-  settings(version: String): directus_settings
   policies(filter: directus_policies_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_policies!]!
   policies_by_id(id: ID!, version: String): directus_policies
   policies_aggregated(groupBy: [String], filter: directus_policies_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_policies_aggregated!]!
   access(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access!]!
   access_by_id(id: ID!, version: String): directus_access
   access_aggregated(groupBy: [String], filter: directus_access_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_access_aggregated!]!
-  versions(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_versions!]!
-  versions_by_id(id: ID!, version: String): directus_versions
-  versions_aggregated(groupBy: [String], filter: directus_versions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_versions_aggregated!]!
   comments(filter: directus_comments_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_comments!]!
   comments_by_id(id: ID!, version: String): directus_comments
   comments_aggregated(groupBy: [String], filter: directus_comments_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_comments_aggregated!]!
@@ -117,12 +117,12 @@ type Mutation {
   create_files_item(data: create_directus_files_input!): directus_files
   create_folders_items(filter: directus_folders_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_folders_input!]): [directus_folders!]!
   create_folders_item(data: create_directus_folders_input!): directus_folders
-  create_users_items(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_users_input!]): [directus_users!]!
-  create_users_item(data: create_directus_users_input!): directus_users
   create_roles_items(filter: directus_roles_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_roles_input!]): [directus_roles!]!
   create_roles_item(data: create_directus_roles_input!): directus_roles
   create_presets_items(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_presets_input!]): [directus_presets!]!
   create_presets_item(data: create_directus_presets_input!): directus_presets
+  create_users_items(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_users_input!]): [directus_users!]!
+  create_users_item(data: create_directus_users_input!): directus_users
   create_panels_items(filter: directus_panels_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_panels_input!]): [directus_panels!]!
   create_panels_item(data: create_directus_panels_input!): directus_panels
   create_notifications_items(filter: directus_notifications_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_notifications_input!]): [directus_notifications!]!
@@ -137,14 +137,14 @@ type Mutation {
   create_operations_item(data: create_directus_operations_input!): directus_operations
   create_translations_items(filter: directus_translations_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_translations_input!]): [directus_translations!]!
   create_translations_item(data: create_directus_translations_input!): directus_translations
+  create_versions_items(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_versions_input!]): [directus_versions!]!
+  create_versions_item(data: create_directus_versions_input!): directus_versions
   create_webhooks_items(filter: directus_webhooks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_webhooks_input!]): [directus_webhooks!]!
   create_webhooks_item(data: create_directus_webhooks_input!): directus_webhooks
   create_policies_items(filter: directus_policies_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_policies_input!]): [directus_policies!]!
   create_policies_item(data: create_directus_policies_input!): directus_policies
   create_access_items(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_access_input!]): [directus_access!]!
   create_access_item(data: create_directus_access_input!): directus_access
-  create_versions_items(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_versions_input!]): [directus_versions!]!
-  create_versions_item(data: create_directus_versions_input!): directus_versions
   create_comments_items(filter: directus_comments_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_comments_input!]): [directus_comments!]!
   create_comments_item(data: create_directus_comments_input!): directus_comments
   update_permissions_items(filter: directus_permissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_permissions_input!): [directus_permissions!]!
@@ -156,15 +156,15 @@ type Mutation {
   update_folders_items(filter: directus_folders_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_folders_input!): [directus_folders!]!
   update_folders_batch(filter: directus_folders_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_folders_input!]): [directus_folders!]!
   update_folders_item(id: ID!, data: update_directus_folders_input!): directus_folders
-  update_users_items(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_users_input!): [directus_users!]!
-  update_users_batch(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_users_input!]): [directus_users!]!
-  update_users_item(id: ID!, data: update_directus_users_input!): directus_users
   update_roles_items(filter: directus_roles_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_roles_input!): [directus_roles!]!
   update_roles_batch(filter: directus_roles_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_roles_input!]): [directus_roles!]!
   update_roles_item(id: ID!, data: update_directus_roles_input!): directus_roles
   update_presets_items(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_presets_input!): [directus_presets!]!
   update_presets_batch(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_presets_input!]): [directus_presets!]!
   update_presets_item(id: ID!, data: update_directus_presets_input!): directus_presets
+  update_users_items(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_users_input!): [directus_users!]!
+  update_users_batch(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_users_input!]): [directus_users!]!
+  update_users_item(id: ID!, data: update_directus_users_input!): directus_users
   update_panels_items(filter: directus_panels_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_panels_input!): [directus_panels!]!
   update_panels_batch(filter: directus_panels_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_panels_input!]): [directus_panels!]!
   update_panels_item(id: ID!, data: update_directus_panels_input!): directus_panels
@@ -186,19 +186,19 @@ type Mutation {
   update_translations_items(filter: directus_translations_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_translations_input!): [directus_translations!]!
   update_translations_batch(filter: directus_translations_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_translations_input!]): [directus_translations!]!
   update_translations_item(id: ID!, data: update_directus_translations_input!): directus_translations
+  update_settings(data: update_directus_settings_input!): directus_settings
+  update_versions_items(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_versions_input!): [directus_versions!]!
+  update_versions_batch(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_versions_input!]): [directus_versions!]!
+  update_versions_item(id: ID!, data: update_directus_versions_input!): directus_versions
   update_webhooks_items(filter: directus_webhooks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_webhooks_input!): [directus_webhooks!]!
   update_webhooks_batch(filter: directus_webhooks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_webhooks_input!]): [directus_webhooks!]!
   update_webhooks_item(id: ID!, data: update_directus_webhooks_input!): directus_webhooks
-  update_settings(data: update_directus_settings_input!): directus_settings
   update_policies_items(filter: directus_policies_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_policies_input!): [directus_policies!]!
   update_policies_batch(filter: directus_policies_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_policies_input!]): [directus_policies!]!
   update_policies_item(id: ID!, data: update_directus_policies_input!): directus_policies
   update_access_items(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_access_input!): [directus_access!]!
   update_access_batch(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_access_input!]): [directus_access!]!
   update_access_item(id: ID!, data: update_directus_access_input!): directus_access
-  update_versions_items(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_versions_input!): [directus_versions!]!
-  update_versions_batch(filter: directus_versions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_versions_input!]): [directus_versions!]!
-  update_versions_item(id: ID!, data: update_directus_versions_input!): directus_versions
   update_comments_items(filter: directus_comments_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_comments_input!): [directus_comments!]!
   update_comments_batch(filter: directus_comments_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_comments_input!]): [directus_comments!]!
   update_comments_item(id: ID!, data: update_directus_comments_input!): directus_comments
@@ -208,12 +208,12 @@ type Mutation {
   delete_files_item(id: ID!): delete_one
   delete_folders_items(ids: [ID]!): delete_many
   delete_folders_item(id: ID!): delete_one
-  delete_users_items(ids: [ID]!): delete_many
-  delete_users_item(id: ID!): delete_one
   delete_roles_items(ids: [ID]!): delete_many
   delete_roles_item(id: ID!): delete_one
   delete_presets_items(ids: [ID]!): delete_many
   delete_presets_item(id: ID!): delete_one
+  delete_users_items(ids: [ID]!): delete_many
+  delete_users_item(id: ID!): delete_one
   delete_panels_items(ids: [ID]!): delete_many
   delete_panels_item(id: ID!): delete_one
   delete_notifications_items(ids: [ID]!): delete_many
@@ -228,14 +228,14 @@ type Mutation {
   delete_operations_item(id: ID!): delete_one
   delete_translations_items(ids: [ID]!): delete_many
   delete_translations_item(id: ID!): delete_one
+  delete_versions_items(ids: [ID]!): delete_many
+  delete_versions_item(id: ID!): delete_one
   delete_webhooks_items(ids: [ID]!): delete_many
   delete_webhooks_item(id: ID!): delete_one
   delete_policies_items(ids: [ID]!): delete_many
   delete_policies_item(id: ID!): delete_one
   delete_access_items(ids: [ID]!): delete_many
   delete_access_item(id: ID!): delete_one
-  delete_versions_items(ids: [ID]!): delete_many
-  delete_versions_item(id: ID!): delete_one
   delete_comments_items(ids: [ID]!): delete_many
   delete_comments_item(id: ID!): delete_one
 }
@@ -245,9 +245,9 @@ type Subscription {
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
   directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
-  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_panels_mutated(event: EventEnum): directus_panels_mutated
   directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
@@ -256,23 +256,23 @@ type Subscription {
   directus_dashboards_mutated(event: EventEnum): directus_dashboards_mutated
   directus_operations_mutated(event: EventEnum): directus_operations_mutated
   directus_translations_mutated(event: EventEnum): directus_translations_mutated
-  directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
+  directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   directus_settings_mutated(event: EventEnum): directus_settings_mutated
+  directus_versions_mutated(event: EventEnum): directus_versions_mutated
+  directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
   directus_policies_mutated(event: EventEnum): directus_policies_mutated
   directus_access_mutated(event: EventEnum): directus_access_mutated
-  directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
   questions_mutated(event: EventEnum): questions_mutated
-  directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
-  quizzes_mutated(event: EventEnum): quizzes_mutated
-  courses_mutated(event: EventEnum): courses_mutated
-  lessons_mutated(event: EventEnum): lessons_mutated
   answer_options_mutated(event: EventEnum): answer_options_mutated
-  lesson_progress_mutated(event: EventEnum): lesson_progress_mutated
-  quiz_attempts_mutated(event: EventEnum): quiz_attempts_mutated
-  user_course_progress_mutated(event: EventEnum): user_course_progress_mutated
-  subscription_plans_mutated(event: EventEnum): subscription_plans_mutated
+  courses_mutated(event: EventEnum): courses_mutated
   subscriptions_mutated(event: EventEnum): subscriptions_mutated
+  lessons_mutated(event: EventEnum): lessons_mutated
+  lesson_progress_mutated(event: EventEnum): lesson_progress_mutated
+  quizzes_mutated(event: EventEnum): quizzes_mutated
+  subscription_plans_mutated(event: EventEnum): subscription_plans_mutated
+  user_course_progress_mutated(event: EventEnum): user_course_progress_mutated
+  quiz_attempts_mutated(event: EventEnum): quiz_attempts_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -350,19 +350,19 @@ enum server_info_websocket_rest_authentication {
 }
 
 type answer_options {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  question_id(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): questions
-  text: String
+  id: ID!
   is_correct: Boolean
   position: Int
+  question_id(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): questions
+  sort: Int
+  status: String
+  text: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
 }
 
 type answer_options_mutated {
@@ -382,20 +382,20 @@ type count_functions {
 }
 
 type courses {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  title: String
   description: String
-  thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   duration_hours: Int
+  id: ID!
+  sort: Int
+  status: String
+  thumbnail(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  title: String
   total_lessons_and_quizess: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   lessons(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lessons]
   lessons_func: count_functions
   quizess(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quizzes]
@@ -1672,17 +1672,17 @@ type directus_webhooks_mutated {
 }
 
 type lesson_progress {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  completed: Boolean
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
+  id: ID!
   lesson_id(filter: lessons_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): lessons
-  completed: Boolean
+  sort: Int
+  status: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
 }
 
 type lesson_progress_mutated {
@@ -1692,22 +1692,22 @@ type lesson_progress_mutated {
 }
 
 type lessons {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
-  date_created: Date
-  date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
-  date_updated: Date
-  date_updated_func: datetime_functions
-  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
-  title: String
-  duration_minutes: Int
   cards_json: JSON
   cards_json_func: count_functions
-  video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  date_created: Date
+  date_created_func: datetime_functions
+  date_updated: Date
+  date_updated_func: datetime_functions
+  duration_minutes: Int
+  id: ID!
   position: Int
+  sort: Int
+  status: String
+  title: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  video_file(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   lesson_progresses(filter: lesson_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [lesson_progress]
   lesson_progresses_func: count_functions
 }
@@ -1725,19 +1725,19 @@ type policy_me_globals_type {
 }
 
 type questions {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
-  prompt: String
-  score: Int
+  id: ID!
   position: Int
+  prompt: String
+  quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
+  score: Int
+  sort: Int
+  status: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   answer_options(filter: answer_options_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [answer_options]
   answer_options_func: count_functions
 }
@@ -1749,18 +1749,20 @@ type questions_mutated {
 }
 
 type quiz_attempts {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
+  id: ID!
+  passed: Boolean
   quiz_id(filter: quizzes_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): quizzes
   score_pct: Int
-  passed: Boolean
+  sort: Int
+  status: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  selected_answers: JSON
+  selected_answers_func: count_functions
 }
 
 type quiz_attempts_mutated {
@@ -1770,23 +1772,23 @@ type quiz_attempts_mutated {
 }
 
 type quizzes {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
-  title: String
+  id: ID!
   passing_score_pct: Int
   position: Int
-  quiz_attempts(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quiz_attempts]
-  quiz_attempts_func: count_functions
+  sort: Int
+  status: String
+  title: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   questions(filter: questions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [questions]
   questions_func: count_functions
+  quiz_attempts(filter: quiz_attempts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [quiz_attempts]
+  quiz_attempts_func: count_functions
 }
 
 type quizzes_mutated {
@@ -1844,18 +1846,18 @@ type server_info_websocket_rest {
 }
 
 type subscription_plans {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
-  title: String
+  id: ID!
   price_kzt: Int
+  sort: Int
+  status: String
+  title: String
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
 }
 
 type subscription_plans_mutated {
@@ -1865,19 +1867,19 @@ type subscription_plans_mutated {
 }
 
 type subscriptions {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  subscription_plan_id(filter: subscription_plans_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): subscription_plans
-  full_name: String
-  phone_number: String
   email: String
+  full_name: String
+  id: ID!
+  phone_number: String
+  sort: Int
+  status: String
+  subscription_plan_id(filter: subscription_plans_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): subscription_plans
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
 }
 
 type subscriptions_mutated {
@@ -1887,18 +1889,18 @@ type subscriptions_mutated {
 }
 
 type user_course_progress {
-  id: ID!
-  status: String
-  sort: Int
-  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
   date_created: Date
   date_created_func: datetime_functions
-  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   date_updated: Date
   date_updated_func: datetime_functions
-  course_id(filter: courses_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): courses
+  id: ID!
   lessons_completed: Int
+  sort: Int
+  status: String
   tests_passed: Int
+  user_created(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  user_updated(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
 }
 
 type user_course_progress_mutated {
@@ -1913,19 +1915,19 @@ type users_me_tfa_generate_data {
 }
 
 input answer_options_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  question_id: questions_filter
-  text: string_filter_operators
+  id: string_filter_operators
   is_correct: boolean_filter_operators
   position: number_filter_operators
+  question_id: questions_filter
+  sort: number_filter_operators
+  status: string_filter_operators
+  text: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   _and: [answer_options_filter]
   _or: [answer_options_filter]
 }
@@ -1957,20 +1959,20 @@ input count_function_filter_operators {
 }
 
 input courses_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  title: string_filter_operators
   description: string_filter_operators
-  thumbnail: directus_files_filter
   duration_hours: number_filter_operators
+  id: string_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  thumbnail: directus_files_filter
+  title: string_filter_operators
   total_lessons_and_quizess: number_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   lessons: lessons_filter
   lessons_func: count_function_filter_operators
   quizess: quizzes_filter
@@ -1980,32 +1982,32 @@ input courses_filter {
 }
 
 input create_answer_options_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
   date_created: Date
-  user_updated: create_directus_users_input
   date_updated: Date
-  question_id: create_questions_input
-  text: String
+  id: ID
   is_correct: Boolean
   position: Int
+  question_id: create_questions_input
+  sort: Int
+  status: String
+  text: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
 }
 
 input create_courses_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
   date_created: Date
-  user_updated: create_directus_users_input
   date_updated: Date
-  title: String
   description: String
-  thumbnail: create_directus_files_input
   duration_hours: Int
+  id: ID
+  sort: Int
+  status: String
+  thumbnail: create_directus_files_input
+  title: String
   total_lessons_and_quizess: Int
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
   lessons: [create_lessons_input]
   quizess: [create_quizzes_input]
 }
@@ -2313,116 +2315,117 @@ input create_directus_webhooks_input {
 }
 
 input create_lesson_progress_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
-  date_created: Date
-  user_updated: create_directus_users_input
-  date_updated: Date
-  lesson_id: create_lessons_input
   completed: Boolean
+  date_created: Date
+  date_updated: Date
+  id: ID
+  lesson_id: create_lessons_input
+  sort: Int
+  status: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
 }
 
 input create_lessons_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
-  date_created: Date
-  user_updated: create_directus_users_input
-  date_updated: Date
-  course_id: create_courses_input
-  title: String
-  duration_minutes: Int
   cards_json: JSON
-  video_file: create_directus_files_input
+  course_id: create_courses_input
+  date_created: Date
+  date_updated: Date
+  duration_minutes: Int
+  id: ID
   position: Int
+  sort: Int
+  status: String
+  title: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
+  video_file: create_directus_files_input
   lesson_progresses: [create_lesson_progress_input]
 }
 
 input create_questions_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
   date_created: Date
-  user_updated: create_directus_users_input
   date_updated: Date
-  quiz_id: create_quizzes_input
-  prompt: String
-  score: Int
+  id: ID
   position: Int
+  prompt: String
+  quiz_id: create_quizzes_input
+  score: Int
+  sort: Int
+  status: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
   answer_options: [create_answer_options_input]
 }
 
 input create_quiz_attempts_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
   date_created: Date
-  user_updated: create_directus_users_input
   date_updated: Date
+  id: ID
+  passed: Boolean
   quiz_id: create_quizzes_input
   score_pct: Int
-  passed: Boolean
+  sort: Int
+  status: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
+  selected_answers: JSON
 }
 
 input create_quizzes_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
-  date_created: Date
-  user_updated: create_directus_users_input
-  date_updated: Date
   course_id: create_courses_input
-  title: String
+  date_created: Date
+  date_updated: Date
+  id: ID
   passing_score_pct: Int
   position: Int
-  quiz_attempts: [create_quiz_attempts_input]
+  sort: Int
+  status: String
+  title: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
   questions: [create_questions_input]
+  quiz_attempts: [create_quiz_attempts_input]
 }
 
 input create_subscription_plans_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
-  date_created: Date
-  user_updated: create_directus_users_input
-  date_updated: Date
   course_id: create_courses_input
-  title: String
+  date_created: Date
+  date_updated: Date
+  id: ID
   price_kzt: Int
+  sort: Int
+  status: String
+  title: String
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
 }
 
 input create_subscriptions_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
   date_created: Date
-  user_updated: create_directus_users_input
   date_updated: Date
-  subscription_plan_id: create_subscription_plans_input
-  full_name: String
-  phone_number: String
   email: String
+  full_name: String
+  id: ID
+  phone_number: String
+  sort: Int
+  status: String
+  subscription_plan_id: create_subscription_plans_input
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
 }
 
 input create_user_course_progress_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: create_directus_users_input
-  date_created: Date
-  user_updated: create_directus_users_input
-  date_updated: Date
   course_id: create_courses_input
+  date_created: Date
+  date_updated: Date
+  id: ID
   lessons_completed: Int
+  sort: Int
+  status: String
   tests_passed: Int
+  user_created: create_directus_users_input
+  user_updated: create_directus_users_input
 }
 
 input date_filter_operators {
@@ -2925,38 +2928,38 @@ input hash_filter_operators {
 }
 
 input lesson_progress_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
+  completed: boolean_filter_operators
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
+  id: string_filter_operators
   lesson_id: lessons_filter
-  completed: boolean_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   _and: [lesson_progress_filter]
   _or: [lesson_progress_filter]
 }
 
 input lessons_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
-  date_created: date_filter_operators
-  date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
-  date_updated: date_filter_operators
-  date_updated_func: datetime_function_filter_operators
-  course_id: courses_filter
-  title: string_filter_operators
-  duration_minutes: number_filter_operators
   cards_json: string_filter_operators
   cards_json_func: count_function_filter_operators
-  video_file: directus_files_filter
+  course_id: courses_filter
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  duration_minutes: number_filter_operators
+  id: string_filter_operators
   position: number_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  title: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
+  video_file: directus_files_filter
   lesson_progresses: lesson_progress_filter
   lesson_progresses_func: count_function_filter_operators
   _and: [lessons_filter]
@@ -2979,19 +2982,19 @@ input number_filter_operators {
 }
 
 input questions_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  quiz_id: quizzes_filter
-  prompt: string_filter_operators
-  score: number_filter_operators
+  id: string_filter_operators
   position: number_filter_operators
+  prompt: string_filter_operators
+  quiz_id: quizzes_filter
+  score: number_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   answer_options: answer_options_filter
   answer_options_func: count_function_filter_operators
   _and: [questions_filter]
@@ -2999,40 +3002,42 @@ input questions_filter {
 }
 
 input quiz_attempts_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
+  id: string_filter_operators
+  passed: boolean_filter_operators
   quiz_id: quizzes_filter
   score_pct: number_filter_operators
-  passed: boolean_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
+  selected_answers: string_filter_operators
+  selected_answers_func: count_function_filter_operators
   _and: [quiz_attempts_filter]
   _or: [quiz_attempts_filter]
 }
 
 input quizzes_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
+  course_id: courses_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  course_id: courses_filter
-  title: string_filter_operators
+  id: string_filter_operators
   passing_score_pct: number_filter_operators
   position: number_filter_operators
-  quiz_attempts: quiz_attempts_filter
-  quiz_attempts_func: count_function_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  title: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   questions: questions_filter
   questions_func: count_function_filter_operators
+  quiz_attempts: quiz_attempts_filter
+  quiz_attempts_func: count_function_filter_operators
   _and: [quizzes_filter]
   _or: [quizzes_filter]
 }
@@ -3060,67 +3065,67 @@ input string_filter_operators {
 }
 
 input subscription_plans_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
+  course_id: courses_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  course_id: courses_filter
-  title: string_filter_operators
+  id: string_filter_operators
   price_kzt: number_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  title: string_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   _and: [subscription_plans_filter]
   _or: [subscription_plans_filter]
 }
 
 input subscriptions_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  subscription_plan_id: subscription_plans_filter
-  full_name: string_filter_operators
-  phone_number: string_filter_operators
   email: string_filter_operators
+  full_name: string_filter_operators
+  id: string_filter_operators
+  phone_number: string_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
+  subscription_plan_id: subscription_plans_filter
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   _and: [subscriptions_filter]
   _or: [subscriptions_filter]
 }
 
 input update_answer_options_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
   date_created: Date
-  user_updated: update_directus_users_input
   date_updated: Date
-  question_id: update_questions_input
-  text: String
+  id: ID
   is_correct: Boolean
   position: Int
+  question_id: update_questions_input
+  sort: Int
+  status: String
+  text: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
 }
 
 input update_courses_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
   date_created: Date
-  user_updated: update_directus_users_input
   date_updated: Date
-  title: String
   description: String
-  thumbnail: update_directus_files_input
   duration_hours: Int
+  id: ID
+  sort: Int
+  status: String
+  thumbnail: update_directus_files_input
+  title: String
   total_lessons_and_quizess: Int
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
   lessons: [update_lessons_input]
   quizess: [update_quizzes_input]
 }
@@ -3469,131 +3474,132 @@ input update_directus_webhooks_input {
 }
 
 input update_lesson_progress_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
-  date_created: Date
-  user_updated: update_directus_users_input
-  date_updated: Date
-  lesson_id: update_lessons_input
   completed: Boolean
+  date_created: Date
+  date_updated: Date
+  id: ID
+  lesson_id: update_lessons_input
+  sort: Int
+  status: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
 }
 
 input update_lessons_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
-  date_created: Date
-  user_updated: update_directus_users_input
-  date_updated: Date
-  course_id: update_courses_input
-  title: String
-  duration_minutes: Int
   cards_json: JSON
-  video_file: update_directus_files_input
+  course_id: update_courses_input
+  date_created: Date
+  date_updated: Date
+  duration_minutes: Int
+  id: ID
   position: Int
+  sort: Int
+  status: String
+  title: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
+  video_file: update_directus_files_input
   lesson_progresses: [update_lesson_progress_input]
 }
 
 input update_questions_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
   date_created: Date
-  user_updated: update_directus_users_input
   date_updated: Date
-  quiz_id: update_quizzes_input
-  prompt: String
-  score: Int
+  id: ID
   position: Int
+  prompt: String
+  quiz_id: update_quizzes_input
+  score: Int
+  sort: Int
+  status: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
   answer_options: [update_answer_options_input]
 }
 
 input update_quiz_attempts_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
   date_created: Date
-  user_updated: update_directus_users_input
   date_updated: Date
+  id: ID
+  passed: Boolean
   quiz_id: update_quizzes_input
   score_pct: Int
-  passed: Boolean
+  sort: Int
+  status: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
+  selected_answers: JSON
 }
 
 input update_quizzes_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
-  date_created: Date
-  user_updated: update_directus_users_input
-  date_updated: Date
   course_id: update_courses_input
-  title: String
+  date_created: Date
+  date_updated: Date
+  id: ID
   passing_score_pct: Int
   position: Int
-  quiz_attempts: [update_quiz_attempts_input]
+  sort: Int
+  status: String
+  title: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
   questions: [update_questions_input]
+  quiz_attempts: [update_quiz_attempts_input]
 }
 
 input update_subscription_plans_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
-  date_created: Date
-  user_updated: update_directus_users_input
-  date_updated: Date
   course_id: update_courses_input
-  title: String
+  date_created: Date
+  date_updated: Date
+  id: ID
   price_kzt: Int
+  sort: Int
+  status: String
+  title: String
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
 }
 
 input update_subscriptions_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
   date_created: Date
-  user_updated: update_directus_users_input
   date_updated: Date
-  subscription_plan_id: update_subscription_plans_input
-  full_name: String
-  phone_number: String
   email: String
+  full_name: String
+  id: ID
+  phone_number: String
+  sort: Int
+  status: String
+  subscription_plan_id: update_subscription_plans_input
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
 }
 
 input update_user_course_progress_input {
-  id: ID
-  status: String
-  sort: Int
-  user_created: update_directus_users_input
-  date_created: Date
-  user_updated: update_directus_users_input
-  date_updated: Date
   course_id: update_courses_input
+  date_created: Date
+  date_updated: Date
+  id: ID
   lessons_completed: Int
+  sort: Int
+  status: String
   tests_passed: Int
+  user_created: update_directus_users_input
+  user_updated: update_directus_users_input
 }
 
 input user_course_progress_filter {
-  id: string_filter_operators
-  status: string_filter_operators
-  sort: number_filter_operators
-  user_created: directus_users_filter
+  course_id: courses_filter
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  user_updated: directus_users_filter
   date_updated: date_filter_operators
   date_updated_func: datetime_function_filter_operators
-  course_id: courses_filter
+  id: string_filter_operators
   lessons_completed: number_filter_operators
+  sort: number_filter_operators
+  status: string_filter_operators
   tests_passed: number_filter_operators
+  user_created: directus_users_filter
+  user_updated: directus_users_filter
   _and: [user_course_progress_filter]
   _or: [user_course_progress_filter]
 }

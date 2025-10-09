@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8055",
+      "url": "https://happyworld.vencera.tech/",
       "description": "Your current Directus instance."
     }
   ],
@@ -3532,579 +3532,6 @@
         ]
       }
     },
-    "/users": {
-      "get": {
-        "summary": "List Users",
-        "description": "List the users.",
-        "operationId": "getUsers",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Users"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "post": {
-        "summary": "Create a User",
-        "description": "Create a new user.",
-        "operationId": "createUser",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Users"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "patch": {
-        "summary": "Update Multiple Users",
-        "description": "Update multiple users at the same time.",
-        "tags": [
-          "Users"
-        ],
-        "operationId": "updateUsers",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "$ref": "#/components/schemas/Users"
-                  },
-                  "keys": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Users"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Users",
-        "description": "Delete multiple existing users.",
-        "tags": [
-          "Users"
-        ],
-        "operationId": "deleteUsers",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      }
-    },
-    "/users/{id}": {
-      "get": {
-        "summary": "Retrieve a User",
-        "description": "Retrieve a single user by unique identifier.",
-        "operationId": "getUser",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "patch": {
-        "summary": "Update a User",
-        "description": "Update an existing user",
-        "operationId": "updateUser",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Users"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "delete": {
-        "summary": "Delete a User",
-        "description": "Delete an existing user",
-        "operationId": "deleteUser",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          }
-        ]
-      }
-    },
-    "/users/invite": {
-      "post": {
-        "summary": "Invite User(s)",
-        "description": "Invites one or more users to this project. It creates a user with an invited status, and then sends an email to the user with instructions on how to activate their account.",
-        "operationId": "invite",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "description": "Email address or array of email addresses of the to-be-invited user(s).",
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/invite/accept": {
-      "post": {
-        "summary": "Accept User Invite",
-        "description": "Accepts and enables an invited user using a JWT invitation token.",
-        "operationId": "acceptInvite",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "example": "eyJh...KmUk",
-                    "description": "Accept invite token."
-                  },
-                  "password": {
-                    "type": "string",
-                    "description": "Password of the user.",
-                    "format": "password",
-                    "example": "d1r3ctu5"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me": {
-      "get": {
-        "summary": "Retrieve Current User",
-        "description": "Retrieve the currently authenticated user.",
-        "operationId": "getMe",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "patch": {
-        "summary": "Update Current User",
-        "description": "Update the currently authenticated user.",
-        "operationId": "updateMe",
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me/track/page": {
-      "patch": {
-        "summary": "Update Last Page",
-        "description": "Updates the last used page field of the currently authenticated user. This is used internally to be able to open the Directus admin app from the last page you used.",
-        "operationId": "updateLastUsedPageMe",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "last_page": {
-                    "description": "Path of the page you used last.",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me/tfa/enable": {
-      "post": {
-        "summary": "Enable 2FA",
-        "description": "Enables two-factor authentication for the currently authenticated user.",
-        "operationId": "meTfaEnable",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me/tfa/disable": {
-      "post": {
-        "summary": "Disable 2FA",
-        "description": "Disables two-factor authentication for the currently authenticated user.",
-        "operationId": "meTfaDisable",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
     "/roles": {
       "get": {
         "summary": "List Roles",
@@ -5020,6 +4447,579 @@
           {
             "$ref": "#/components/parameters/Id"
           }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "List Users",
+        "description": "List the users.",
+        "operationId": "getUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Users"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "post": {
+        "summary": "Create a User",
+        "description": "Create a new user.",
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "summary": "Update Multiple Users",
+        "description": "Update multiple users at the same time.",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "updateUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Users"
+                  },
+                  "keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Users"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Users",
+        "description": "Delete multiple existing users.",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "deleteUsers",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Retrieve a User",
+        "description": "Retrieve a single user by unique identifier.",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "summary": "Update a User",
+        "description": "Update an existing user",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a User",
+        "description": "Delete an existing user",
+        "operationId": "deleteUser",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          }
+        ]
+      }
+    },
+    "/users/invite": {
+      "post": {
+        "summary": "Invite User(s)",
+        "description": "Invites one or more users to this project. It creates a user with an invited status, and then sends an email to the user with instructions on how to activate their account.",
+        "operationId": "invite",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "Email address or array of email addresses of the to-be-invited user(s).",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/invite/accept": {
+      "post": {
+        "summary": "Accept User Invite",
+        "description": "Accepts and enables an invited user using a JWT invitation token.",
+        "operationId": "acceptInvite",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "example": "eyJh...KmUk",
+                    "description": "Accept invite token."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of the user.",
+                    "format": "password",
+                    "example": "d1r3ctu5"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "summary": "Retrieve Current User",
+        "description": "Retrieve the currently authenticated user.",
+        "operationId": "getMe",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "summary": "Update Current User",
+        "description": "Update the currently authenticated user.",
+        "operationId": "updateMe",
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me/track/page": {
+      "patch": {
+        "summary": "Update Last Page",
+        "description": "Updates the last used page field of the currently authenticated user. This is used internally to be able to open the Directus admin app from the last page you used.",
+        "operationId": "updateLastUsedPageMe",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "last_page": {
+                    "description": "Path of the page you used last.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me/tfa/enable": {
+      "post": {
+        "summary": "Enable 2FA",
+        "description": "Enables two-factor authentication for the currently authenticated user.",
+        "operationId": "meTfaEnable",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me/tfa/disable": {
+      "post": {
+        "summary": "Disable 2FA",
+        "description": "Disables two-factor authentication for the currently authenticated user.",
+        "operationId": "meTfaDisable",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
         ]
       }
     },
@@ -6020,6 +6020,393 @@
         ]
       }
     },
+    "/items/directus_sync_id_map": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new directus_sync_id_map item.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "createItemsDirectusSyncIDMap",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the directus_sync_id_map items.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "readItemsDirectusSyncIDMap",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple directus_sync_id_map items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "updateItemsDirectusSyncIDMap",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing directus_sync_id_map items.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "deleteItemsDirectusSyncIDMap",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/directus_sync_id_map/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single directus_sync_id_map item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "readSingleItemsDirectusSyncIDMap",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing directus_sync_id_map item.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "updateSingleItemsDirectusSyncIDMap",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing directus_sync_id_map item.",
+        "tags": [
+          "Items",
+          "ItemsDirectusSyncIDMap"
+        ],
+        "operationId": "deleteSingleItemsDirectusSyncIDMap",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "/extensions": {
       "get": {
         "summary": "List Extensions",
@@ -6188,398 +6575,6 @@
         },
         "tags": [
           "Extensions"
-        ]
-      }
-    },
-    "/webhooks": {
-      "get": {
-        "summary": "List Webhooks",
-        "description": "Get all webhooks.",
-        "operationId": "getWebhooks",
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Webhooks"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Webhooks"
-        ]
-      },
-      "post": {
-        "summary": "Create a Webhook",
-        "description": "Create a new webhook.",
-        "operationId": "createWebhook",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "name": {
-                    "description": "The name of the webhook.",
-                    "type": "string",
-                    "example": "create articles"
-                  },
-                  "method": {
-                    "description": "Method used in the webhook.",
-                    "type": "string",
-                    "example": "POST"
-                  },
-                  "url": {
-                    "description": "The url of the webhook.",
-                    "type": "string",
-                    "example": null
-                  },
-                  "status": {
-                    "description": "The status of the webhook.",
-                    "type": "string",
-                    "example": "active"
-                  },
-                  "data": {
-                    "description": "If yes, send the content of what was done",
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "actions": {
-                    "description": "The actions that triggers this webhook.",
-                    "example": null
-                  },
-                  "system-collections": {
-                    "description": "The collections that triggers this webhook.",
-                    "example": null
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Roles"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Webhooks"
-        ]
-      },
-      "patch": {
-        "summary": "Update Multiple Webhooks",
-        "description": "Update multiple webhooks at the same time.",
-        "tags": [
-          "Webhooks"
-        ],
-        "operationId": "updateWebhooks",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "data": {
-                    "properties": {
-                      "name": {
-                        "description": "The name of the webhook.",
-                        "type": "string",
-                        "example": "create articles"
-                      },
-                      "method": {
-                        "description": "Method used in the webhook.",
-                        "type": "string",
-                        "example": "POST"
-                      },
-                      "url": {
-                        "description": "The url of the webhook.",
-                        "type": "string",
-                        "example": null
-                      },
-                      "status": {
-                        "description": "The status of the webhook.",
-                        "type": "string",
-                        "example": "active"
-                      },
-                      "data": {
-                        "description": "If yes, send the content of what was done",
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "actions": {
-                        "description": "The actions that triggers this webhook.",
-                        "example": null
-                      },
-                      "system-collections": {
-                        "description": "The collections that triggers this webhook.",
-                        "example": null
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "keys": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Webhooks"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Webhooks",
-        "description": "Delete multiple existing webhooks.",
-        "tags": [
-          "Webhooks"
-        ],
-        "operationId": "deleteWebhooks",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      }
-    },
-    "/webhooks/{id}": {
-      "get": {
-        "summary": "Retrieve a Webhook",
-        "description": "Retrieve a single webhook by unique identifier.",
-        "operationId": "getWebhook",
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Webhooks"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Webhooks"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          }
-        ]
-      },
-      "patch": {
-        "summary": "Update a Webhook",
-        "description": "Update an existing webhook",
-        "operationId": "updateWebhook",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "name": {
-                    "description": "The name of the webhook.",
-                    "type": "string",
-                    "example": "create articles"
-                  },
-                  "method": {
-                    "description": "Method used in the webhook.",
-                    "type": "string",
-                    "example": "POST"
-                  },
-                  "url": {
-                    "description": "The url of the webhook.",
-                    "type": "string",
-                    "example": null
-                  },
-                  "status": {
-                    "description": "The status of the webhook.",
-                    "type": "string",
-                    "example": "active"
-                  },
-                  "data": {
-                    "description": "If yes, send the content of what was done",
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "actions": {
-                    "description": "The actions that triggers this webhook.",
-                    "example": null
-                  },
-                  "system-collections": {
-                    "description": "The collections that triggers this webhook.",
-                    "example": null
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Roles"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Webhooks"
-        ]
-      },
-      "delete": {
-        "summary": "Delete a Webhook",
-        "description": "Delete an existing webhook",
-        "operationId": "deleteWebhook",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Webhooks"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          }
         ]
       }
     },
@@ -7135,6 +7130,398 @@
         },
         "tags": [
           "Versions"
+        ]
+      }
+    },
+    "/webhooks": {
+      "get": {
+        "summary": "List Webhooks",
+        "description": "Get all webhooks.",
+        "operationId": "getWebhooks",
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Webhooks"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Webhooks"
+        ]
+      },
+      "post": {
+        "summary": "Create a Webhook",
+        "description": "Create a new webhook.",
+        "operationId": "createWebhook",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "description": "The name of the webhook.",
+                    "type": "string",
+                    "example": "create articles"
+                  },
+                  "method": {
+                    "description": "Method used in the webhook.",
+                    "type": "string",
+                    "example": "POST"
+                  },
+                  "url": {
+                    "description": "The url of the webhook.",
+                    "type": "string",
+                    "example": null
+                  },
+                  "status": {
+                    "description": "The status of the webhook.",
+                    "type": "string",
+                    "example": "active"
+                  },
+                  "data": {
+                    "description": "If yes, send the content of what was done",
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "actions": {
+                    "description": "The actions that triggers this webhook.",
+                    "example": null
+                  },
+                  "system-collections": {
+                    "description": "The collections that triggers this webhook.",
+                    "example": null
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Webhooks"
+        ]
+      },
+      "patch": {
+        "summary": "Update Multiple Webhooks",
+        "description": "Update multiple webhooks at the same time.",
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "updateWebhooks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "data": {
+                    "properties": {
+                      "name": {
+                        "description": "The name of the webhook.",
+                        "type": "string",
+                        "example": "create articles"
+                      },
+                      "method": {
+                        "description": "Method used in the webhook.",
+                        "type": "string",
+                        "example": "POST"
+                      },
+                      "url": {
+                        "description": "The url of the webhook.",
+                        "type": "string",
+                        "example": null
+                      },
+                      "status": {
+                        "description": "The status of the webhook.",
+                        "type": "string",
+                        "example": "active"
+                      },
+                      "data": {
+                        "description": "If yes, send the content of what was done",
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "actions": {
+                        "description": "The actions that triggers this webhook.",
+                        "example": null
+                      },
+                      "system-collections": {
+                        "description": "The collections that triggers this webhook.",
+                        "example": null
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Webhooks"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Webhooks",
+        "description": "Delete multiple existing webhooks.",
+        "tags": [
+          "Webhooks"
+        ],
+        "operationId": "deleteWebhooks",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/webhooks/{id}": {
+      "get": {
+        "summary": "Retrieve a Webhook",
+        "description": "Retrieve a single webhook by unique identifier.",
+        "operationId": "getWebhook",
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Webhooks"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Webhooks"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update a Webhook",
+        "description": "Update an existing webhook",
+        "operationId": "updateWebhook",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "description": "The name of the webhook.",
+                    "type": "string",
+                    "example": "create articles"
+                  },
+                  "method": {
+                    "description": "Method used in the webhook.",
+                    "type": "string",
+                    "example": "POST"
+                  },
+                  "url": {
+                    "description": "The url of the webhook.",
+                    "type": "string",
+                    "example": null
+                  },
+                  "status": {
+                    "description": "The status of the webhook.",
+                    "type": "string",
+                    "example": "active"
+                  },
+                  "data": {
+                    "description": "If yes, send the content of what was done",
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "actions": {
+                    "description": "The actions that triggers this webhook.",
+                    "example": null
+                  },
+                  "system-collections": {
+                    "description": "The collections that triggers this webhook.",
+                    "example": null
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Roles"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Webhooks"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a Webhook",
+        "description": "Delete an existing webhook",
+        "operationId": "deleteWebhook",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Webhooks"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          }
         ]
       }
     },
@@ -7898,15 +8285,15 @@
         ]
       }
     },
-    "/items/directus_sync_id_map": {
+    "/items/answer_options": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new directus_sync_id_map item.",
+        "description": "Create a new answer_options item.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "createItemsDirectusSyncIDMap",
+        "operationId": "createItemsAnswerOptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -7920,11 +8307,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      "$ref": "#/components/schemas/ItemsAnswerOptions"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                    "$ref": "#/components/schemas/ItemsAnswerOptions"
                   }
                 ]
               }
@@ -7941,7 +8328,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                        "$ref": "#/components/schemas/ItemsAnswerOptions"
                       }
                     }
                   }
@@ -7956,12 +8343,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the directus_sync_id_map items.",
+        "description": "List the answer_options items.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "readItemsDirectusSyncIDMap",
+        "operationId": "readItemsAnswerOptions",
         "security": [
           {
             "Auth": []
@@ -8002,7 +8389,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                        "$ref": "#/components/schemas/ItemsAnswerOptions"
                       }
                     },
                     "meta": {
@@ -8020,12 +8407,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple directus_sync_id_map items at the same time.",
+        "description": "Update multiple answer_options items at the same time.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "updateItemsDirectusSyncIDMap",
+        "operationId": "updateItemsAnswerOptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -8057,11 +8444,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      "$ref": "#/components/schemas/ItemsAnswerOptions"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                    "$ref": "#/components/schemas/ItemsAnswerOptions"
                   }
                 ]
               }
@@ -8077,7 +8464,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                        "$ref": "#/components/schemas/ItemsAnswerOptions"
                       }
                     }
                   }
@@ -8089,12 +8476,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing directus_sync_id_map items.",
+        "description": "Delete multiple existing answer_options items.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "deleteItemsDirectusSyncIDMap",
+        "operationId": "deleteItemsAnswerOptions",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -8106,15 +8493,15 @@
         "parameters": []
       }
     },
-    "/items/directus_sync_id_map/{id}": {
+    "/items/answer_options/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single directus_sync_id_map item by unique identifier.",
+        "description": "Retrieve a single answer_options item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "readSingleItemsDirectusSyncIDMap",
+        "operationId": "readSingleItemsAnswerOptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -8156,7 +8543,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      "$ref": "#/components/schemas/ItemsAnswerOptions"
                     }
                   }
                 }
@@ -8173,12 +8560,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing directus_sync_id_map item.",
+        "description": "Update an existing answer_options item.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "updateSingleItemsDirectusSyncIDMap",
+        "operationId": "updateSingleItemsAnswerOptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -8212,7 +8599,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                "$ref": "#/components/schemas/ItemsAnswerOptions"
               }
             }
           }
@@ -8227,7 +8614,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsDirectusSyncIDMap"
+                      "$ref": "#/components/schemas/ItemsAnswerOptions"
                     }
                   }
                 }
@@ -8244,399 +8631,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing directus_sync_id_map item.",
+        "description": "Delete an existing answer_options item.",
         "tags": [
           "Items",
-          "ItemsDirectusSyncIDMap"
+          "ItemsAnswerOptions"
         ],
-        "operationId": "deleteSingleItemsDirectusSyncIDMap",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "/items/quizzes": {
-      "post": {
-        "summary": "Create an Item",
-        "description": "Create a new quizzes item.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "createItemsQuizzes",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsQuizzes"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsQuizzes"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsQuizzes"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "get": {
-        "summary": "List Items",
-        "description": "List the quizzes items.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "readItemsQuizzes",
-        "security": [
-          {
-            "Auth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/ItemsQuizzes"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Items",
-        "description": "Update multiple quizzes items at the same time.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "updateItemsQuizzes",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsQuizzes"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsQuizzes"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsQuizzes"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing quizzes items.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "deleteItemsQuizzes",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": []
-      }
-    },
-    "/items/quizzes/{id}": {
-      "get": {
-        "summary": "Retrieve an Item",
-        "description": "Retrieve a single quizzes item by unique identifier.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "readSingleItemsQuizzes",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Version"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsQuizzes"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an Item",
-        "description": "Update an existing quizzes item.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "updateSingleItemsQuizzes",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/ItemsQuizzes"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsQuizzes"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an Item",
-        "description": "Delete an existing quizzes item.",
-        "tags": [
-          "Items",
-          "ItemsQuizzes"
-        ],
-        "operationId": "deleteSingleItemsQuizzes",
+        "operationId": "deleteSingleItemsAnswerOptions",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -9059,6 +9059,393 @@
         ]
       }
     },
+    "/items/subscriptions": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new subscriptions item.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "createItemsSubscriptions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsSubscriptions"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsSubscriptions"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the subscriptions items.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "readItemsSubscriptions",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsSubscriptions"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple subscriptions items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "updateItemsSubscriptions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsSubscriptions"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsSubscriptions"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing subscriptions items.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "deleteItemsSubscriptions",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/subscriptions/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single subscriptions item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "readSingleItemsSubscriptions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing subscriptions item.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "updateSingleItemsSubscriptions",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsSubscriptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing subscriptions item.",
+        "tags": [
+          "Items",
+          "ItemsSubscriptions"
+        ],
+        "operationId": "deleteSingleItemsSubscriptions",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "/items/lessons": {
       "post": {
         "summary": "Create an Item",
@@ -9411,393 +9798,6 @@
           "ItemsLessons"
         ],
         "operationId": "deleteSingleItemsLessons",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "/items/answer_options": {
-      "post": {
-        "summary": "Create an Item",
-        "description": "Create a new answer_options item.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "createItemsAnswerOptions",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsAnswerOptions"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsAnswerOptions"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsAnswerOptions"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "get": {
-        "summary": "List Items",
-        "description": "List the answer_options items.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "readItemsAnswerOptions",
-        "security": [
-          {
-            "Auth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/ItemsAnswerOptions"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Items",
-        "description": "Update multiple answer_options items at the same time.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "updateItemsAnswerOptions",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsAnswerOptions"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsAnswerOptions"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsAnswerOptions"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing answer_options items.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "deleteItemsAnswerOptions",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": []
-      }
-    },
-    "/items/answer_options/{id}": {
-      "get": {
-        "summary": "Retrieve an Item",
-        "description": "Retrieve a single answer_options item by unique identifier.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "readSingleItemsAnswerOptions",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Version"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsAnswerOptions"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an Item",
-        "description": "Update an existing answer_options item.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "updateSingleItemsAnswerOptions",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/ItemsAnswerOptions"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsAnswerOptions"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an Item",
-        "description": "Delete an existing answer_options item.",
-        "tags": [
-          "Items",
-          "ItemsAnswerOptions"
-        ],
-        "operationId": "deleteSingleItemsAnswerOptions",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -10220,15 +10220,15 @@
         ]
       }
     },
-    "/items/quiz_attempts": {
+    "/items/quizzes": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new quiz_attempts item.",
+        "description": "Create a new quizzes item.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "createItemsQuizAttempts",
+        "operationId": "createItemsQuizzes",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -10242,11 +10242,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      "$ref": "#/components/schemas/ItemsQuizzes"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsQuizAttempts"
+                    "$ref": "#/components/schemas/ItemsQuizzes"
                   }
                 ]
               }
@@ -10263,7 +10263,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsQuizAttempts"
+                        "$ref": "#/components/schemas/ItemsQuizzes"
                       }
                     }
                   }
@@ -10278,12 +10278,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the quiz_attempts items.",
+        "description": "List the quizzes items.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "readItemsQuizAttempts",
+        "operationId": "readItemsQuizzes",
         "security": [
           {
             "Auth": []
@@ -10324,7 +10324,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsQuizAttempts"
+                        "$ref": "#/components/schemas/ItemsQuizzes"
                       }
                     },
                     "meta": {
@@ -10342,12 +10342,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple quiz_attempts items at the same time.",
+        "description": "Update multiple quizzes items at the same time.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "updateItemsQuizAttempts",
+        "operationId": "updateItemsQuizzes",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -10379,11 +10379,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      "$ref": "#/components/schemas/ItemsQuizzes"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsQuizAttempts"
+                    "$ref": "#/components/schemas/ItemsQuizzes"
                   }
                 ]
               }
@@ -10399,7 +10399,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsQuizAttempts"
+                        "$ref": "#/components/schemas/ItemsQuizzes"
                       }
                     }
                   }
@@ -10411,12 +10411,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing quiz_attempts items.",
+        "description": "Delete multiple existing quizzes items.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "deleteItemsQuizAttempts",
+        "operationId": "deleteItemsQuizzes",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -10428,15 +10428,15 @@
         "parameters": []
       }
     },
-    "/items/quiz_attempts/{id}": {
+    "/items/quizzes/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single quiz_attempts item by unique identifier.",
+        "description": "Retrieve a single quizzes item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "readSingleItemsQuizAttempts",
+        "operationId": "readSingleItemsQuizzes",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -10478,7 +10478,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      "$ref": "#/components/schemas/ItemsQuizzes"
                     }
                   }
                 }
@@ -10495,12 +10495,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing quiz_attempts item.",
+        "description": "Update an existing quizzes item.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "updateSingleItemsQuizAttempts",
+        "operationId": "updateSingleItemsQuizzes",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -10534,7 +10534,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsQuizAttempts"
+                "$ref": "#/components/schemas/ItemsQuizzes"
               }
             }
           }
@@ -10549,7 +10549,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      "$ref": "#/components/schemas/ItemsQuizzes"
                     }
                   }
                 }
@@ -10566,399 +10566,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing quiz_attempts item.",
+        "description": "Delete an existing quizzes item.",
         "tags": [
           "Items",
-          "ItemsQuizAttempts"
+          "ItemsQuizzes"
         ],
-        "operationId": "deleteSingleItemsQuizAttempts",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "/items/user_course_progress": {
-      "post": {
-        "summary": "Create an Item",
-        "description": "Create a new user_course_progress item.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "createItemsUserCourseProgress",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "get": {
-        "summary": "List Items",
-        "description": "List the user_course_progress items.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "readItemsUserCourseProgress",
-        "security": [
-          {
-            "Auth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Items",
-        "description": "Update multiple user_course_progress items at the same time.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "updateItemsUserCourseProgress",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing user_course_progress items.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "deleteItemsUserCourseProgress",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": []
-      }
-    },
-    "/items/user_course_progress/{id}": {
-      "get": {
-        "summary": "Retrieve an Item",
-        "description": "Retrieve a single user_course_progress item by unique identifier.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "readSingleItemsUserCourseProgress",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Version"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an Item",
-        "description": "Update an existing user_course_progress item.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "updateSingleItemsUserCourseProgress",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/ItemsUserCourseProgress"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an Item",
-        "description": "Delete an existing user_course_progress item.",
-        "tags": [
-          "Items",
-          "ItemsUserCourseProgress"
-        ],
-        "operationId": "deleteSingleItemsUserCourseProgress",
+        "operationId": "deleteSingleItemsQuizzes",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -11381,15 +10994,15 @@
         ]
       }
     },
-    "/items/subscriptions": {
+    "/items/user_course_progress": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new subscriptions item.",
+        "description": "Create a new user_course_progress item.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "createItemsSubscriptions",
+        "operationId": "createItemsUserCourseProgress",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -11403,11 +11016,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsSubscriptions"
+                    "$ref": "#/components/schemas/ItemsUserCourseProgress"
                   }
                 ]
               }
@@ -11424,7 +11037,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsSubscriptions"
+                        "$ref": "#/components/schemas/ItemsUserCourseProgress"
                       }
                     }
                   }
@@ -11439,12 +11052,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the subscriptions items.",
+        "description": "List the user_course_progress items.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "readItemsSubscriptions",
+        "operationId": "readItemsUserCourseProgress",
         "security": [
           {
             "Auth": []
@@ -11485,7 +11098,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsSubscriptions"
+                        "$ref": "#/components/schemas/ItemsUserCourseProgress"
                       }
                     },
                     "meta": {
@@ -11503,12 +11116,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple subscriptions items at the same time.",
+        "description": "Update multiple user_course_progress items at the same time.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "updateItemsSubscriptions",
+        "operationId": "updateItemsUserCourseProgress",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -11540,11 +11153,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsSubscriptions"
+                    "$ref": "#/components/schemas/ItemsUserCourseProgress"
                   }
                 ]
               }
@@ -11560,7 +11173,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsSubscriptions"
+                        "$ref": "#/components/schemas/ItemsUserCourseProgress"
                       }
                     }
                   }
@@ -11572,12 +11185,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing subscriptions items.",
+        "description": "Delete multiple existing user_course_progress items.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "deleteItemsSubscriptions",
+        "operationId": "deleteItemsUserCourseProgress",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -11589,15 +11202,15 @@
         "parameters": []
       }
     },
-    "/items/subscriptions/{id}": {
+    "/items/user_course_progress/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single subscriptions item by unique identifier.",
+        "description": "Retrieve a single user_course_progress item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "readSingleItemsSubscriptions",
+        "operationId": "readSingleItemsUserCourseProgress",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -11639,7 +11252,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
                     }
                   }
                 }
@@ -11656,12 +11269,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing subscriptions item.",
+        "description": "Update an existing user_course_progress item.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "updateSingleItemsSubscriptions",
+        "operationId": "updateSingleItemsUserCourseProgress",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -11695,7 +11308,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsSubscriptions"
+                "$ref": "#/components/schemas/ItemsUserCourseProgress"
               }
             }
           }
@@ -11710,7 +11323,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsSubscriptions"
+                      "$ref": "#/components/schemas/ItemsUserCourseProgress"
                     }
                   }
                 }
@@ -11727,12 +11340,399 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing subscriptions item.",
+        "description": "Delete an existing user_course_progress item.",
         "tags": [
           "Items",
-          "ItemsSubscriptions"
+          "ItemsUserCourseProgress"
         ],
-        "operationId": "deleteSingleItemsSubscriptions",
+        "operationId": "deleteSingleItemsUserCourseProgress",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/quiz_attempts": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new quiz_attempts item.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "createItemsQuizAttempts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsQuizAttempts"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the quiz_attempts items.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "readItemsQuizAttempts",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple quiz_attempts items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "updateItemsQuizAttempts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsQuizAttempts"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsQuizAttempts"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing quiz_attempts items.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "deleteItemsQuizAttempts",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/quiz_attempts/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single quiz_attempts item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "readSingleItemsQuizAttempts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing quiz_attempts item.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "updateSingleItemsQuizAttempts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsQuizAttempts"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsQuizAttempts"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing quiz_attempts item.",
+        "tags": [
+          "Items",
+          "ItemsQuizAttempts"
+        ],
+        "operationId": "deleteSingleItemsQuizAttempts",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -11833,11 +11833,6 @@
       "x-collection": "directus_folders"
     },
     {
-      "name": "Users",
-      "description": "Users are what gives you access to the data.",
-      "x-collection": "directus_users"
-    },
-    {
       "name": "Roles",
       "description": "Roles are groups of users that share permissions.",
       "x-collection": "directus_roles"
@@ -11846,6 +11841,11 @@
       "name": "Presets",
       "description": "Presets hold the preferences of individual users of the platform. This allows Directus to show and maintain custom item listings for users of the app.",
       "x-collection": "directus_presets"
+    },
+    {
+      "name": "Users",
+      "description": "Users are what gives you access to the data.",
+      "x-collection": "directus_users"
     },
     {
       "name": "Revisions",
@@ -11868,14 +11868,13 @@
       "x-collection": "directus_operations"
     },
     {
+      "name": "ItemsDirectusSyncIDMap",
+      "x-collection": "directus_sync_id_map"
+    },
+    {
       "name": "Extensions",
       "description": "Directus can easily be extended through the addition of several types of extensions, including layouts, interfaces, and modules.",
       "x-collection": "directus_extensions"
-    },
-    {
-      "name": "Webhooks",
-      "description": "Webhooks.",
-      "x-collection": "directus_webhooks"
     },
     {
       "name": "Settings",
@@ -11888,6 +11887,11 @@
       "x-collection": "directus_versions"
     },
     {
+      "name": "Webhooks",
+      "description": "Webhooks.",
+      "x-collection": "directus_webhooks"
+    },
+    {
       "name": "Comments",
       "description": "Comments can be added to items.",
       "x-collection": "directus_comments"
@@ -11897,44 +11901,40 @@
       "x-collection": "questions"
     },
     {
-      "name": "ItemsDirectusSyncIDMap",
-      "x-collection": "directus_sync_id_map"
-    },
-    {
-      "name": "ItemsQuizzes",
-      "x-collection": "quizzes"
+      "name": "ItemsAnswerOptions",
+      "x-collection": "answer_options"
     },
     {
       "name": "ItemsCourses",
       "x-collection": "courses"
     },
     {
-      "name": "ItemsLessons",
-      "x-collection": "lessons"
+      "name": "ItemsSubscriptions",
+      "x-collection": "subscriptions"
     },
     {
-      "name": "ItemsAnswerOptions",
-      "x-collection": "answer_options"
+      "name": "ItemsLessons",
+      "x-collection": "lessons"
     },
     {
       "name": "ItemsLessonProgress",
       "x-collection": "lesson_progress"
     },
     {
-      "name": "ItemsQuizAttempts",
-      "x-collection": "quiz_attempts"
-    },
-    {
-      "name": "ItemsUserCourseProgress",
-      "x-collection": "user_course_progress"
+      "name": "ItemsQuizzes",
+      "x-collection": "quizzes"
     },
     {
       "name": "ItemsSubscriptionPlans",
       "x-collection": "subscription_plans"
     },
     {
-      "name": "ItemsSubscriptions",
-      "x-collection": "subscriptions"
+      "name": "ItemsUserCourseProgress",
+      "x-collection": "user_course_progress"
+    },
+    {
+      "name": "ItemsQuizAttempts",
+      "x-collection": "quiz_attempts"
     }
   ],
   "components": {
@@ -13340,6 +13340,38 @@
         },
         "x-collection": "directus_operations"
       },
+      "ItemsDirectusSyncIDMap": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "table": {
+            "nullable": false,
+            "type": "string"
+          },
+          "sync_id": {
+            "nullable": false,
+            "type": "string"
+          },
+          "local_id": {
+            "nullable": false,
+            "type": "string"
+          },
+          "created_at": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          }
+        },
+        "x-collection": "directus_sync_id_map",
+        "required": [
+          "table",
+          "sync_id",
+          "local_id"
+        ]
+      },
       "Extensions": {
         "type": "object",
         "properties": {
@@ -13368,78 +13400,6 @@
           }
         },
         "x-collection": "directus_extensions"
-      },
-      "Webhooks": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The index of the webhook.",
-            "type": "integer",
-            "example": 1
-          },
-          "name": {
-            "description": "The name of the webhook.",
-            "type": "string",
-            "example": "create articles"
-          },
-          "method": {
-            "description": "Method used in the webhook.",
-            "type": "string",
-            "example": "POST"
-          },
-          "url": {
-            "description": "The url of the webhook.",
-            "type": "string",
-            "example": null,
-            "nullable": true
-          },
-          "status": {
-            "description": "The status of the webhook.",
-            "type": "string",
-            "example": "inactive"
-          },
-          "data": {
-            "description": "If yes, send the content of what was done",
-            "type": "boolean",
-            "example": true
-          },
-          "actions": {
-            "description": "The actions that triggers this webhook.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "example": null,
-            "nullable": true
-          },
-          "collections": {
-            "nullable": false,
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "headers": {
-            "nullable": true
-          },
-          "was_active_before_deprecation": {
-            "nullable": false,
-            "type": "boolean"
-          },
-          "migrated_flow": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Flows"
-              }
-            ]
-          }
-        },
-        "x-collection": "directus_webhooks"
       },
       "Settings": {
         "type": "object",
@@ -13790,6 +13750,78 @@
         },
         "x-collection": "directus_versions"
       },
+      "Webhooks": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The index of the webhook.",
+            "type": "integer",
+            "example": 1
+          },
+          "name": {
+            "description": "The name of the webhook.",
+            "type": "string",
+            "example": "create articles"
+          },
+          "method": {
+            "description": "Method used in the webhook.",
+            "type": "string",
+            "example": "POST"
+          },
+          "url": {
+            "description": "The url of the webhook.",
+            "type": "string",
+            "example": null,
+            "nullable": true
+          },
+          "status": {
+            "description": "The status of the webhook.",
+            "type": "string",
+            "example": "inactive"
+          },
+          "data": {
+            "description": "If yes, send the content of what was done",
+            "type": "boolean",
+            "example": true
+          },
+          "actions": {
+            "description": "The actions that triggers this webhook.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": null,
+            "nullable": true
+          },
+          "collections": {
+            "nullable": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "headers": {
+            "nullable": true
+          },
+          "was_active_before_deprecation": {
+            "nullable": false,
+            "type": "boolean"
+          },
+          "migrated_flow": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Flows"
+              }
+            ]
+          }
+        },
+        "x-collection": "directus_webhooks"
+      },
       "Comments": {
         "type": "object",
         "properties": {
@@ -13864,52 +13896,28 @@
       "ItemsQuestions": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
           "date_created": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
           },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
           "date_updated": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "position": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "prompt": {
+            "nullable": true,
+            "type": "string"
           },
           "quiz_id": {
             "nullable": true,
@@ -13923,17 +13931,41 @@
               }
             ]
           },
-          "prompt": {
-            "nullable": true,
-            "type": "string"
-          },
           "score": {
             "nullable": true,
             "type": "integer"
           },
-          "position": {
+          "sort": {
             "nullable": true,
             "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
           },
           "answer_options": {
             "nullable": true,
@@ -13956,53 +13988,55 @@
           "id"
         ]
       },
-      "ItemsDirectusSyncIDMap": {
+      "ItemsAnswerOptions": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "integer"
-          },
-          "table": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sync_id": {
-            "nullable": false,
-            "type": "string"
-          },
-          "local_id": {
-            "nullable": false,
-            "type": "string"
-          },
-          "created_at": {
+          "date_created": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
-          }
-        },
-        "x-collection": "directus_sync_id_map",
-        "required": [
-          "table",
-          "sync_id",
-          "local_id"
-        ]
-      },
-      "ItemsQuizzes": {
-        "type": "object",
-        "properties": {
+          },
+          "date_updated": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
           "id": {
             "nullable": false,
             "type": "string",
             "format": "uuid"
           },
-          "status": {
-            "nullable": false,
-            "type": "string"
+          "is_correct": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "position": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "question_id": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsQuestions"
+              }
+            ]
           },
           "sort": {
             "nullable": true,
             "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "text": {
+            "nullable": true,
+            "type": "string"
           },
           "user_created": {
             "nullable": true,
@@ -14016,11 +14050,6 @@
               }
             ]
           },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
           "user_updated": {
             "nullable": true,
             "oneOf": [
@@ -14032,68 +14061,9 @@
                 "$ref": "#/components/schemas/Users"
               }
             ]
-          },
-          "date_updated": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "course_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsCourses"
-              }
-            ]
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
-          },
-          "passing_score_pct": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "position": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "quiz_attempts": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "format": "uuid"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsQuizAttempts"
-                }
-              ]
-            }
-          },
-          "questions": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string",
-                  "format": "uuid"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsQuestions"
-                }
-              ]
-            }
           }
         },
-        "x-collection": "quizzes",
+        "x-collection": "answer_options",
         "required": [
           "id"
         ]
@@ -14101,59 +14071,35 @@
       "ItemsCourses": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
           "date_created": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
-          },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
           },
           "date_updated": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
           },
-          "title": {
+          "description": {
             "nullable": true,
             "type": "string"
           },
-          "description": {
+          "duration_hours": {
             "nullable": true,
+            "type": "integer"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
             "type": "string"
           },
           "thumbnail": {
@@ -14168,13 +14114,37 @@
               }
             ]
           },
-          "duration_hours": {
+          "title": {
             "nullable": true,
-            "type": "integer"
+            "type": "string"
           },
           "total_lessons_and_quizess": {
             "nullable": true,
             "type": "integer"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
           },
           "lessons": {
             "nullable": true,
@@ -14212,21 +14182,55 @@
           "id"
         ]
       },
-      "ItemsLessons": {
+      "ItemsSubscriptions": {
         "type": "object",
         "properties": {
+          "date_created": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "date_updated": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "email": {
+            "nullable": true,
+            "type": "string"
+          },
+          "full_name": {
+            "nullable": true,
+            "type": "string"
+          },
           "id": {
             "nullable": false,
             "type": "string",
             "format": "uuid"
           },
-          "status": {
-            "nullable": false,
+          "phone_number": {
+            "nullable": true,
             "type": "string"
           },
           "sort": {
             "nullable": true,
             "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "subscription_plan_id": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsSubscriptionPlans"
+              }
+            ]
           },
           "user_created": {
             "nullable": true,
@@ -14240,11 +14244,6 @@
               }
             ]
           },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
           "user_updated": {
             "nullable": true,
             "oneOf": [
@@ -14256,11 +14255,18 @@
                 "$ref": "#/components/schemas/Users"
               }
             ]
-          },
-          "date_updated": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
+          }
+        },
+        "x-collection": "subscriptions",
+        "required": [
+          "id"
+        ]
+      },
+      "ItemsLessons": {
+        "type": "object",
+        "properties": {
+          "cards_json": {
+            "nullable": true
           },
           "course_id": {
             "nullable": true,
@@ -14274,16 +14280,64 @@
               }
             ]
           },
-          "title": {
+          "date_created": {
             "nullable": true,
-            "type": "string"
+            "type": "string",
+            "format": "timestamp"
+          },
+          "date_updated": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
           },
           "duration_minutes": {
             "nullable": true,
             "type": "integer"
           },
-          "cards_json": {
-            "nullable": true
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "position": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
           },
           "video_file": {
             "nullable": true,
@@ -14296,10 +14350,6 @@
                 "$ref": "#/components/schemas/Files"
               }
             ]
-          },
-          "position": {
-            "nullable": true,
-            "type": "integer"
           },
           "lesson_progresses": {
             "nullable": true,
@@ -14322,135 +14372,27 @@
           "id"
         ]
       },
-      "ItemsAnswerOptions": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_updated": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "question_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsQuestions"
-              }
-            ]
-          },
-          "text": {
-            "nullable": true,
-            "type": "string"
-          },
-          "is_correct": {
-            "nullable": true,
-            "type": "boolean"
-          },
-          "position": {
-            "nullable": true,
-            "type": "integer"
-          }
-        },
-        "x-collection": "answer_options",
-        "required": [
-          "id"
-        ]
-      },
       "ItemsLessonProgress": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
+          "completed": {
             "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
+            "type": "boolean"
           },
           "date_created": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
           },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
           "date_updated": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
           },
           "lesson_id": {
             "nullable": true,
@@ -14464,9 +14406,37 @@
               }
             ]
           },
-          "completed": {
+          "sort": {
             "nullable": true,
-            "type": "boolean"
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
           }
         },
         "x-collection": "lesson_progress",
@@ -14474,19 +14444,235 @@
           "id"
         ]
       },
-      "ItemsQuizAttempts": {
+      "ItemsQuizzes": {
         "type": "object",
         "properties": {
+          "course_id": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsCourses"
+              }
+            ]
+          },
+          "date_created": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "date_updated": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
           "id": {
             "nullable": false,
             "type": "string",
             "format": "uuid"
           },
+          "passing_score_pct": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "position": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
           "status": {
             "nullable": false,
             "type": "string"
           },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "questions": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsQuestions"
+                }
+              ]
+            }
+          },
+          "quiz_attempts": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsQuizAttempts"
+                }
+              ]
+            }
+          }
+        },
+        "x-collection": "quizzes",
+        "required": [
+          "id"
+        ]
+      },
+      "ItemsSubscriptionPlans": {
+        "type": "object",
+        "properties": {
+          "course_id": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsCourses"
+              }
+            ]
+          },
+          "date_created": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "date_updated": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "price_kzt": {
+            "nullable": true,
+            "type": "integer"
+          },
           "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          }
+        },
+        "x-collection": "subscription_plans",
+        "required": [
+          "id"
+        ]
+      },
+      "ItemsUserCourseProgress": {
+        "type": "object",
+        "properties": {
+          "course_id": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsCourses"
+              }
+            ]
+          },
+          "date_created": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "date_updated": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "lessons_completed": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "tests_passed": {
             "nullable": true,
             "type": "integer"
           },
@@ -14502,11 +14688,6 @@
               }
             ]
           },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
           "user_updated": {
             "nullable": true,
             "oneOf": [
@@ -14518,11 +14699,34 @@
                 "$ref": "#/components/schemas/Users"
               }
             ]
+          }
+        },
+        "x-collection": "user_course_progress",
+        "required": [
+          "id"
+        ]
+      },
+      "ItemsQuizAttempts": {
+        "type": "object",
+        "properties": {
+          "date_created": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
           },
           "date_updated": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "passed": {
+            "nullable": true,
+            "type": "boolean"
           },
           "quiz_id": {
             "nullable": true,
@@ -14540,244 +14744,43 @@
             "nullable": true,
             "type": "integer"
           },
-          "passed": {
+          "sort": {
             "nullable": true,
-            "type": "boolean"
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "user_created": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user_updated": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "selected_answers": {
+            "nullable": true
           }
         },
         "x-collection": "quiz_attempts",
-        "required": [
-          "id"
-        ]
-      },
-      "ItemsUserCourseProgress": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_updated": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "course_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsCourses"
-              }
-            ]
-          },
-          "lessons_completed": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "tests_passed": {
-            "nullable": true,
-            "type": "integer"
-          }
-        },
-        "x-collection": "user_course_progress",
-        "required": [
-          "id"
-        ]
-      },
-      "ItemsSubscriptionPlans": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_updated": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "course_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsCourses"
-              }
-            ]
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
-          },
-          "price_kzt": {
-            "nullable": true,
-            "type": "integer"
-          }
-        },
-        "x-collection": "subscription_plans",
-        "required": [
-          "id"
-        ]
-      },
-      "ItemsSubscriptions": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "user_created": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_created": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "user_updated": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "date_updated": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "subscription_plan_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsSubscriptionPlans"
-              }
-            ]
-          },
-          "full_name": {
-            "nullable": true,
-            "type": "string"
-          },
-          "phone_number": {
-            "nullable": true,
-            "type": "string"
-          },
-          "email": {
-            "nullable": true,
-            "type": "string"
-          }
-        },
-        "x-collection": "subscriptions",
         "required": [
           "id"
         ]

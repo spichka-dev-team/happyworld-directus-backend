@@ -10,9 +10,12 @@
     "field": "quizess",
     "group": null,
     "hidden": false,
-    "interface": null,
+    "interface": "list-o2m",
     "note": null,
-    "options": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{id}}"
+    },
     "readonly": false,
     "required": false,
     "sort": 15,
