@@ -848,8 +848,9 @@ type directus_users {
   theme_light_overrides_func: count_functions
   theme_dark_overrides: JSON
   theme_dark_overrides_func: count_functions
-  user_course_progress_id(filter: user_course_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): user_course_progress
   active_subscription_id(filter: subscriptions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): subscriptions
+  my_course_progress_id(filter: user_course_progress_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [user_course_progress]
+  my_course_progress_id_func: count_functions
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
   policies_func: count_functions
 }
@@ -1713,8 +1714,8 @@ input create_directus_users_input {
   theme_light: String
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
-  user_course_progress_id: create_user_course_progress_input
   active_subscription_id: create_subscriptions_input
+  my_course_progress_id: [create_user_course_progress_input]
   policies: [create_directus_access_input]
 }
 
@@ -2112,8 +2113,9 @@ input directus_users_filter {
   theme_light_overrides_func: count_function_filter_operators
   theme_dark_overrides: string_filter_operators
   theme_dark_overrides_func: count_function_filter_operators
-  user_course_progress_id: user_course_progress_filter
   active_subscription_id: subscriptions_filter
+  my_course_progress_id: user_course_progress_filter
+  my_course_progress_id_func: count_function_filter_operators
   policies: directus_access_filter
   policies_func: count_function_filter_operators
   _and: [directus_users_filter]
@@ -2460,8 +2462,8 @@ input update_directus_users_input {
   theme_light: String
   theme_light_overrides: JSON
   theme_dark_overrides: JSON
-  user_course_progress_id: update_user_course_progress_input
   active_subscription_id: update_subscriptions_input
+  my_course_progress_id: [update_user_course_progress_input]
   policies: [update_directus_access_input]
 }
 

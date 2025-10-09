@@ -73,7 +73,8 @@
       "quiz_attempt_id",
       "active_subscription",
       "course_id",
-      "active_subscription_id"
+      "active_subscription_id",
+      "my_course_progress_id"
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "795fccde-8bac-44c0-94a8-98d247d30d87"
@@ -227,6 +228,56 @@
     ],
     "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
     "_syncId": "b29602dd-10f6-4158-bac9-bcbd0f3adda5"
+  },
+  {
+    "collection": "subscription_plans",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "title",
+      "course_id",
+      "price_kzt"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "d78beac8-13a7-4a8b-af08-3ed7103b9a31"
+  },
+  {
+    "collection": "subscriptions",
+    "action": "create",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "subscription_plan_id"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "22781f93-6157-405c-9b97-de837ae04cd1"
+  },
+  {
+    "collection": "subscriptions",
+    "action": "read",
+    "permissions": {
+      "_and": [
+        {
+          "user_created": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "subscription_plan_id",
+      "user_created",
+      "date_created"
+    ],
+    "policy": "25c68401-51cd-4f4b-9444-9cf4ff6a1397",
+    "_syncId": "897ee73f-4f27-4af2-922c-d59c1e57b587"
   },
   {
     "collection": "user_course_progress",

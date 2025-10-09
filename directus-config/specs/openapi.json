@@ -12465,18 +12465,6 @@
           "theme_dark_overrides": {
             "nullable": true
           },
-          "user_course_progress_id": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsUserCourseProgress"
-              }
-            ]
-          },
           "active_subscription_id": {
             "nullable": true,
             "oneOf": [
@@ -12488,6 +12476,21 @@
                 "$ref": "#/components/schemas/ItemsSubscriptions"
               }
             ]
+          },
+          "my_course_progress_id": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsUserCourseProgress"
+                }
+              ]
+            }
           },
           "policies": {
             "nullable": true
