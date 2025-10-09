@@ -94,7 +94,8 @@
       "active_subscription",
       "course_id",
       "active_subscription_id",
-      "my_course_progress_id"
+      "my_course_progress_id",
+      "my_course_id"
     ],
     "policy": "f346dae0-2f52-40ad-ab89-e114e18937ea",
     "_syncId": "d24eb309-17ab-48ed-a350-84c7d5198adb"
